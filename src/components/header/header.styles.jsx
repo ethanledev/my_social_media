@@ -4,16 +4,18 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
+  background-color: white;
+  border-bottom: 1px solid #efefef;
 
   h1 {
-    font-size: 30px;
+    font-size: 20px;
     margin: 0;
     cursor: pointer;
   }
 `;
 
 export const HeaderContent = styled.div`
-  width: 50%;
+  width: 800px;
   display: flex;
   justify-content: space-between;
   align-items: center;
