@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -10,7 +11,7 @@ import { generateInputs, initializeForm } from "./helpers";
 
 const SignUpPage = ({ type }) => {
   const [input, setInput] = useState(initializeForm());
-  const [isButtonDisabled, setButtonDisabled] = useState(true);
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
 
   useEffect(() => {
     setInput(initializeForm(type));
@@ -18,7 +19,18 @@ const SignUpPage = ({ type }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("sign up");
+    if (type === "signup") {
+      handleSignUp();
+    }
+  };
+
+  const handleSignUp = async () => {
+    const user = await axios({
+      method: "post",
+      url: "/signup",
+      data: input,
+    });
+    console.log(user);
   };
 
   return (
