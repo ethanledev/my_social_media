@@ -41,8 +41,8 @@ export const generateInputs = (input, setInput) => {
 export const initializeForm = (type) => {
   if (type === "signup") {
     return {
-      email: "",
       name: "",
+      email: "",
       username: "",
       password: "",
       confirmPassword: "",
