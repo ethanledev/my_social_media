@@ -5,13 +5,19 @@ import {
   SidePanelHeader,
   FriendList,
   Messages,
-} from "./messages.styles";
+} from "./messages-page.styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-regular-svg-icons";
 
 const MessagesPage = () => {
   return (
     <MessagesPageContainer>
       <SidePanel>
-        <SidePanelHeader></SidePanelHeader>
+        <SidePanelHeader>
+          <div></div>
+          <div>hieuhmle</div>
+          <FontAwesomeIcon icon={faEdit} title="Create New Message" />
+        </SidePanelHeader>
         <FriendList></FriendList>
       </SidePanel>
       <Messages></Messages>

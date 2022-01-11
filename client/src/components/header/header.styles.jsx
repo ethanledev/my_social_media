@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import * as global from "../../global-styles";
 
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
   background-color: white;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid ${global.borderColor};
 
   h1 {
     font-size: 20px;

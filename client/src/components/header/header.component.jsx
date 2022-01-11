@@ -20,7 +20,7 @@ const Header = () => {
       };
     } else {
       return {
-        color: "grey",
+        color: "#c7c7c7",
       };
     }
   };
@@ -36,16 +36,16 @@ const Header = () => {
           <Link to="/">
             <FontAwesomeIcon icon={faHome} style={getIconColor("/")} />
           </Link>
-          <Link to="/create-post">
+          <Link to="/create/post">
             <FontAwesomeIcon
               icon={faPlusSquare}
-              style={getIconColor("/create-post")}
+              style={getIconColor("/create/post")}
             />
           </Link>
-          <Link to="/messages">
+          <Link to="/inbox/messages">
             <FontAwesomeIcon
               icon={faCommentAlt}
-              style={getIconColor("/messages")}
+              style={getIconColor("/inbox/messages")}
             />
           </Link>
           <ProfilePicture src="https://www.seekpng.com/png/detail/506-5061704_cool-profile-avatar-picture-cool-picture-for-profile.png" />

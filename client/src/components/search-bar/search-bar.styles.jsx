@@ -1,12 +1,14 @@
 import styled from "styled-components";
+import * as global from "../../global-styles";
 
 export const SearchBarContainer = styled.div`
   height: 30px;
   width: 250px;
-  background-color: #efefef;
+  background-color: ${global.backgroundColor};
   border: none;
   outline: none;
   padding: 0px 10px;
+  border: 1px solid ${global.borderColor};
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -21,6 +23,6 @@ export const SearchBarContainer = styled.div`
   }
 
   svg {
-    color: #c7c7c7;
+    color: ${global.iconColor};
   }
 `;
