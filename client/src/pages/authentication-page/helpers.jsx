@@ -49,7 +49,7 @@ export const initializeForm = (type) => {
     };
   } else {
     return {
-      username: "",
+      email: "",
       password: "",
     };
   }
