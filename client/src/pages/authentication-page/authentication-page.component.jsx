@@ -1,36 +1,64 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
-  LogInLink,
+  AuthLink,
   SignUpForm,
   SignUpFormContainer,
   SignUpPageContainer,
 } from "./authentication-page.styles";
-import { generateInputs, initializeForm } from "./helpers";
+import { generateInputs, initializeForm } from "./authenticate-helpers";
 
 const SignUpPage = ({ type }) => {
   const [input, setInput] = useState(initializeForm());
   const [isButtonDisabled, setButtonDisabled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setInput(initializeForm(type));
   }, [type]);
 
+  useEffect(() => {}, [input]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (type === "signup") {
       handleSignUp();
+    } else {
+      handleLogIn();
     }
   };
 
   const handleSignUp = async () => {
-    const user = await axios({
-      method: "post",
-      url: "/signup",
-      data: input,
-    });
-    console.log(user);
+    try {
+      const user = await axios({
+        method: "post",
+        url: "/users/signup",
+        data: input,
+      });
+      console.log(user);
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleLogIn = async () => {
+    try {
+      const user = await axios({
+        method: "post",
+        url: "/users/login",
+        data: {
+          username: input.email,
+          password: input.password,
+        },
+      });
+
+      console.log(user);
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -40,8 +68,8 @@ const SignUpPage = ({ type }) => {
         {type === "signup" ? (
           <h2>Sign up to see photos and videos from your friends.</h2>
         ) : null}
-        <SignUpForm>
-          {generateInputs(input, setInput)}
+        <SignUpForm autoComplete="off">
+          {generateInputs(type, input, setInput)}
           <button
             disabled={isButtonDisabled}
             type="submit"
@@ -52,15 +80,15 @@ const SignUpPage = ({ type }) => {
         </SignUpForm>
       </SignUpFormContainer>
       {type === "signup" ? (
-        <LogInLink>
+        <AuthLink>
           <p>Have an account?</p>
           <Link to="/accounts/login">Log in</Link>
-        </LogInLink>
+        </AuthLink>
       ) : (
-        <LogInLink>
+        <AuthLink>
           <p>Don't have an account?</p>
           <Link to="/accounts/signup">Sign up</Link>
-        </LogInLink>
+        </AuthLink>
       )}
     </SignUpPageContainer>
   );

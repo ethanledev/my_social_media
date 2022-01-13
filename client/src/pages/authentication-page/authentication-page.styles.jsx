@@ -21,13 +21,14 @@ export const SignUpFormContainer = styled.div`
     font-size: 18px;
     color: grey;
     font-weight: 500;
+    margin: 0;
   }
 `;
 
-export const SignUpForm = styled.div`
+export const SignUpForm = styled.form`
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 0px;
 
   button {
     background-color: ${global.buttonBlueColor};
@@ -47,7 +48,7 @@ export const SignUpForm = styled.div`
   }
 `;
 
-export const LogInLink = styled.div`
+export const AuthLink = styled.div`
   background-color: white;
   border: 1px solid ${global.borderColor};
   height: 70px;

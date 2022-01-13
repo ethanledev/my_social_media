@@ -6,7 +6,7 @@ const capitalizeFirstLetter = (str) => {
     : str[0].toUpperCase() + str.substring(1);
 };
 
-export const generateInputs = (input, setInput) => {
+export const generateInputs = (authType, input, setInput) => {
   let inputs = [];
 
   for (let field in input) {
@@ -20,7 +20,7 @@ export const generateInputs = (input, setInput) => {
     }
     inputs.push(
       <FormInput
-        key={`authentication_input_${field}`}
+        key={`authentication_input_${authType}_${field}`}
         type={type}
         name={field}
         value={input[field]}

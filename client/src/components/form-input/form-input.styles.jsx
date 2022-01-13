@@ -11,7 +11,7 @@ const getShrinkLabel = css`
 
 export const FormInputContainer = styled.div`
   position: relative;
-  margin-bottom: 45px;
+  margin-top: 45px;
 
   input[type="password"] {
     letter-spacing: 3px;

@@ -4,34 +4,44 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const users = require("./database/users/users.utils");
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const Account = require("./database/accounts/accounts.model");
+const cookieParser = require("cookie-parser");
 // const path = require("path");
 
-if (process.env.NODE_ENV !== "production") require("dotenv").config();
+if (process.env.NODE_ENV !== "production")
+  require("dotenv").config({ path: "../.env" });
+
+require("./strategies/JwtStrategy");
+require("./strategies/LocalStrategy");
+require("./authenticate");
+
+const userRouter = require("./routes/userRoutes");
 
 const app = express();
 const port = process.env.PORT || 5000;
-const MONGO_URL =
-  "mongodb+srv://hieuhmle:240294hieu@portfoliocluster.cbuy9.mongodb.net/myInstagram?retryWrites=true&w=majority";
+const MONGO_URL = process.env.MONGO_URL;
+
+// const whitelist = process.env.WHITELISTED_DOMAINS
+//   ? process.env.WHITELISTED_DOMAINS.split(",")
+//   : [];
+
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin || whitelist.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+
+//   credentials: true,
+// };
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(
-  require("express-session")({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-
+app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(passport.initialize());
-app.use(passport.session());
-// passport config
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+app.use("/users", userRouter);
 
 mongoose.connection.once("open", () => {
   console.log("********** MongoDB connection ready! **********");
@@ -53,26 +63,4 @@ startServer();
 
 app.get("/fetch/users", async (req, res) => {
   users.fetchUsers(req, res);
-});
-
-app.post("/signup", (req, res) => {
-  const { email, username, name, password } = req.body;
-  Account.register(
-    new Account({ username: email }),
-    password,
-    async (error, account) => {
-      if (error) {
-        console.error(error);
-      }
-
-      const newUser = await users.createUser(
-        account._id,
-        email,
-        username,
-        name
-      );
-
-      res.send(newUser);
-    }
-  );
 });
