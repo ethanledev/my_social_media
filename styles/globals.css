@@ -1,9 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--background-gray);
 }
 
 a {
@@ -11,6 +16,25 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+.appIcon {
+  font-size: 60px;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+.pageContainer {
+  margin-top: 80px;
+}
+
+.profile-picture {
+  border-radius: 50%;
+}
+
+:root {
+  --border-gray: #dbdbdb;
+  --background-gray: #fafafa;
+  --input-gray: #efefef;
 }

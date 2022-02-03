@@ -1,7 +1,50 @@
-import '../styles/globals.css'
+import React, { useEffect, useState } from "react";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+import NavBar from "../components/nav-bar";
+import NavLinks from "../components/nav-links";
+import MobileHeader from "../components/mobile-header";
 
-export default MyApp
+import "../styles/globals.css";
+
+const MyApp = ({ Component, pageProps }) => {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    handleWindowResize();
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
+
+  const renderApp = () => {
+    if (windowWidth > 1200) {
+      return (
+        <React.Fragment>
+          <NavBar />
+          <div className="pageContainer">
+            <Component {...pageProps} />
+          </div>
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <MobileHeader />
+          <div className="pageContainer">
+            <Component {...pageProps} />
+          </div>
+          <NavLinks isMobile={true} />
+        </React.Fragment>
+      );
+    }
+  };
+
+  return renderApp();
+};
+
+export default MyApp;

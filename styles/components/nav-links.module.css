@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30px;
+  width: 300px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 20px 0 20px;
+    border-top: 1px solid var(--border-gray);
+  }
+}
