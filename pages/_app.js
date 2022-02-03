@@ -22,11 +22,12 @@ const MyApp = ({ Component, pageProps }) => {
   }, []);
 
   const renderApp = () => {
-    if (windowWidth > 1200) {
+    if (windowWidth > 900) {
       return (
         <React.Fragment>
           <NavBar />
           <div className="pageContainer">
+            <div>{windowWidth} px</div>
             <Component {...pageProps} />
           </div>
         </React.Fragment>
@@ -36,6 +37,7 @@ const MyApp = ({ Component, pageProps }) => {
         <React.Fragment>
           <MobileHeader />
           <div className="pageContainer">
+            <div>{windowWidth} px</div>
             <Component {...pageProps} />
           </div>
           <NavLinks isMobile={true} />

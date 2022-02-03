@@ -9,3 +9,9 @@
   border-bottom: 1px solid var(--border-gray);
   background-color: white;
 }
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    padding: 5px 10% 0px 10%;
+  }
+}
