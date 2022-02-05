@@ -1,5 +1,5 @@
 .container {
-  background-color: var(--input-gray);
+  background-color: var(--input-bg-gray);
   display: flex;
   align-items: center;
   border-radius: 10px;
@@ -8,8 +8,8 @@
 }
 
 .searchIcon {
-  color: gray;
-  font-size: 20px;
+  color: var(--input-placeholder-gray);
+  font-size: 25px;
 }
 
 .searchInput {
@@ -17,6 +17,10 @@
   font-size: 20px;
   margin-left: 5px;
   width: 100%;
+}
+
+.searchInput::placeholder {
+  color: var(--input-placeholder-gray);
 }
 
 @media only screen and (max-width: 1000px) {

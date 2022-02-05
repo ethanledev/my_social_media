@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { GiStripedSun } from "react-icons/gi";
 
-import navLinkIcons from "../utils/navLinkIcons";
+import navLinkIcons from "../utils/nav-links/navLinkIcons";
 
 import styles from "../styles/components/mobile-header.module.css";
 
@@ -13,7 +13,11 @@ const MobileHeader = () => {
   return (
     <div className={styles.container}>
       <div className={styles.spacer}></div>
-      <GiStripedSun className="appIcon" />
+      <Link href="/">
+        <a>
+          <GiStripedSun className="appIcon" />
+        </a>
+      </Link>
       <Link href="/explore/search">
         <a className={styles.searchIcon}>
           {currentPath === "/explore/search"

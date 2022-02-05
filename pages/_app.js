@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import NavBar from "../components/nav-bar";
+import DesktopHeader from "../components/desktop-header";
 import NavLinks from "../components/nav-links";
 import MobileHeader from "../components/mobile-header";
+import DesktopHeaderProvider from "../contexts/desktop-header-context";
 
 import "../styles/globals.css";
 
@@ -25,7 +26,9 @@ const MyApp = ({ Component, pageProps }) => {
     if (windowWidth > 900) {
       return (
         <React.Fragment>
-          <NavBar />
+          <DesktopHeaderProvider>
+            <DesktopHeader />
+          </DesktopHeaderProvider>
           <div className="pageContainer">
             <div>{windowWidth} px</div>
             <Component {...pageProps} />
