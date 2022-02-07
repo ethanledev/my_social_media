@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import navLinkIcons from "../../utils/nav-links/navLinkIcons";
 
-import styles from "../../styles/components/dropdown/profile-dropdown.module.css";
+import styles from "../../styles/_app/profile-dropdown.module.css";
 
 const ProfileDropdown = () => {
   const renderItems = () => {

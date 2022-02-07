@@ -4,7 +4,7 @@ import navLinkIcons from "./navLinkIcons";
 import { getProfileIcon } from "..";
 import DropdownContainer from "../../components/_app/dropdown-container";
 
-import styles from "../../styles/components/nav-links.module.css";
+import styles from "../../styles/_app/nav-links.module.css";
 import ProfileDropdown from "../../components/_app/profile-dropdown";
 
 const generateNavLinks = (pathNames, currentPath) => {
@@ -86,6 +86,9 @@ const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
       >
         {getProfileIcon("s", currentPath === "/[username]")}
         {getDropdownContainer("profile")}
+        <DropdownContainer>
+          <ProfileDropdown />
+        </DropdownContainer>
       </div>
     </div>
   );

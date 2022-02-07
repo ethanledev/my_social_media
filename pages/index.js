@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "../styles/pages/home.module.css";
+import styles from "../styles/home/home.module.css";
 
 const Home = () => {
   return (

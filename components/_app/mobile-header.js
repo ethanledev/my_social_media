@@ -4,7 +4,7 @@ import { GiStripedSun } from "react-icons/gi";
 
 import navLinkIcons from "../../utils/nav-links/navLinkIcons";
 
-import styles from "../../styles/components/mobile-header.module.css";
+import styles from "../../styles/_app/mobile-header.module.css";
 
 const MobileHeader = () => {
   const router = useRouter();

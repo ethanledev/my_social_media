@@ -5,7 +5,7 @@ import {
   generateMobileNavLinks,
 } from "../../utils/nav-links";
 
-import styles from "../../styles/components/nav-links.module.css";
+import styles from "../../styles/_app/nav-links.module.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import { DesktopHeaderContext } from "../../contexts/desktop-header-context";
 

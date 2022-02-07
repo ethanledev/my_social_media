@@ -4,7 +4,7 @@ import { GiStripedSun } from "react-icons/gi";
 import SearchBar from "./search-bar";
 import NavLinks from "./nav-links";
 
-import styles from "../../styles/components/desktop-header.module.css";
+import styles from "../../styles/_app/desktop-header.module.css";
 
 const DesktopHeader = () => {
   return (
