@@ -22,6 +22,10 @@ input {
   outline: none;
 }
 
+.active {
+  border: 2px solid black !important;
+}
+
 .appIcon {
   font-size: 60px;
 }
@@ -34,7 +38,17 @@ input {
   margin-top: 80px;
 }
 
-.profile-picture {
+.profilePicture {
+  border-radius: 50%;
+  overflow: hidden;
+  box-sizing: none;
+}
+
+.profilePicture span {
+  display: block !important;
+}
+
+.profilePicture img {
   border-radius: 50%;
 }
 

@@ -45,7 +45,8 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 10px 20px 0 20px;
+    padding: 0 20px;
     border-top: 1px solid var(--border-gray);
+    font-size: 27px;
   }
 }

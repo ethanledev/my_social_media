@@ -25,18 +25,17 @@ const generateNavLinks = (pathNames, currentPath) => {
 };
 
 const generateMobileNavLinks = (currentPath) => {
+  console.log(currentPath);
   const pathNames = ["home", "messages", "createPost", "notifications"];
   const navLinks = generateNavLinks(pathNames, currentPath);
 
   // add profile picture Nav Link
   navLinks.push(
-    <Link href="/ape" key="/[username]">
-      <a>
-        <div key="profileIconButton" className={styles.navLinkIcon}>
-          {getProfileIcon("s")}
-        </div>
-      </a>
-    </Link>
+    <div key="profileIconButton" className={styles.dropdownButton}>
+      <Link href="/ape" key="/[username]">
+        <a>{getProfileIcon("s", currentPath === "/[username]")}</a>
+      </Link>
+    </div>
   );
 
   return navLinks;
@@ -79,7 +78,7 @@ const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
         onClick={() => toggleDropdown("profile")}
         onBlur={() => toggleDropdown("")}
       >
-        {getProfileIcon("s")}
+        {getProfileIcon("s", currentPath === "/[username]")}
         {getDropdownContainer("profile")}
       </div>
     </div>
