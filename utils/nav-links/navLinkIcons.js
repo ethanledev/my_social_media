@@ -19,7 +19,7 @@ const navLinkIcons = {
     outline: <AiOutlineHome />,
   },
   messages: {
-    path: "/direct/messages",
+    path: "/account/messages",
     fill: <AiFillMessage />,
     outline: <AiOutlineMessage />,
   },

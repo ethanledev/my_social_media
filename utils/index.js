@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const getProfileIcon = (size, handleOnClick = null) => {
   const sizes = {
-    s: 30,
+    s: 35,
     m: 35,
     l: 35,
     xl: 35,

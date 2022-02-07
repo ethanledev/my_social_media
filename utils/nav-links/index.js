@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import navLinkIcons from "./navLinkIcons";
 import { getProfileIcon } from "..";
+import DropdownContainer from "../../components/dropdown/dropdown-container";
 
 import styles from "../../styles/components/nav-links.module.css";
 
@@ -41,21 +42,14 @@ const generateMobileNavLinks = (currentPath) => {
   return navLinks;
 };
 
-const handleDropdownButtonOnBlur = (event, dropdownType, toggleDropdown) => {
-  event.preventDefault();
-  window.addEventListener("mouseup", () => toggleDropdown(dropdownType), {
-    once: true,
-  });
-};
-
 const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
   const pathNames = ["home", "messages", "createPost"];
   const navLinks = generateNavLinks(pathNames, currentPath);
 
   // add notifications button and profile button
-  const getIndicator = (buttonType) => {
+  const getDropdownContainer = (buttonType) => {
     return dropdown === buttonType ? (
-      <div className={styles.triangleIndicator}></div>
+      <DropdownContainer dropdownType={buttonType} />
     ) : null;
   };
 
@@ -65,17 +59,15 @@ const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
         className={styles.dropdownIconContainer}
         tabIndex={0}
         onClick={() => toggleDropdown("notifications")}
-        onBlur={(event) =>
-          handleDropdownButtonOnBlur(event, "notifications", toggleDropdown)
-        }
+        onBlur={() => toggleDropdown("")}
       >
         {
           navLinkIcons.notifications[
             dropdown === "notifications" ? "fill" : "outline"
           ]
         }
+        {getDropdownContainer("notifications")}
       </div>
-      {getIndicator("notifications")}
     </div>
   );
 
@@ -85,13 +77,11 @@ const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
         className={styles.dropdownIconContainer}
         tabIndex={0}
         onClick={() => toggleDropdown("profile")}
-        onBlur={(event) =>
-          handleDropdownButtonOnBlur(event, "profile", toggleDropdown)
-        }
+        onBlur={() => toggleDropdown("")}
       >
         {getProfileIcon("s")}
+        {getDropdownContainer("profile")}
       </div>
-      {getIndicator("profile")}
     </div>
   );
 

@@ -9,6 +9,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--background-gray);
+  z-index: 0;
 }
 
 a {
@@ -16,13 +17,17 @@ a {
   text-decoration: none;
 }
 
+input {
+  border: none;
+  outline: none;
+}
+
 .appIcon {
   font-size: 60px;
 }
 
-input {
-  border: none;
-  outline: none;
+.hide {
+  visibility: hidden;
 }
 
 .pageContainer {
@@ -31,6 +36,10 @@ input {
 
 .profile-picture {
   border-radius: 50%;
+}
+
+.show {
+  visibility: visible;
 }
 
 :root {
