@@ -1,5 +1,17 @@
 .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15% 5px 15%;
+  border-bottom: 1px solid var(--border-gray);
+  background-color: white;
   position: fixed;
   top: 0px;
   width: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    padding: 0 10%;
+  }
 }

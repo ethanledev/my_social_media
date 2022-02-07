@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import {
   generateDesktopNavLinks,
   generateMobileNavLinks,
-} from "../utils/nav-links";
+} from "../../utils/nav-links";
 
-import styles from "../styles/components/nav-links.module.css";
+import styles from "../../styles/components/nav-links.module.css";
 import { useContext, useEffect, useRef, useState } from "react";
-import { DesktopHeaderContext } from "../contexts/desktop-header-context";
+import { DesktopHeaderContext } from "../../contexts/desktop-header-context";
 
 const NavLinks = ({ isMobile }) => {
   const router = useRouter();

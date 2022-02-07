@@ -2,10 +2,10 @@ import Link from "next/link";
 
 import navLinkIcons from "./navLinkIcons";
 import { getProfileIcon } from "..";
-import DropdownContainer from "../../components/dropdown/dropdown-container";
+import DropdownContainer from "../../components/_app/dropdown-container";
 
 import styles from "../../styles/components/nav-links.module.css";
-import ProfileDropdown from "../../components/dropdown/profile-dropdown";
+import ProfileDropdown from "../../components/_app/profile-dropdown";
 
 const generateNavLinks = (pathNames, currentPath) => {
   const navLinks = pathNames.map((pathName) => {

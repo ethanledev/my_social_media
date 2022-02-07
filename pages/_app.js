@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import DesktopHeader from "../components/desktop-header";
-import NavLinks from "../components/nav-links";
-import MobileHeader from "../components/mobile-header";
+import DesktopHeader from "../components/_app/desktop-header";
+import NavLinks from "../components/_app/nav-links";
+import MobileHeader from "../components/_app/mobile-header";
 import DesktopHeaderProvider from "../contexts/desktop-header-context";
 
 import "../styles/globals.css";

@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { AiOutlineSearch as SearchIcon } from "react-icons/ai";
 import { TiDelete as DeleteButton } from "react-icons/ti";
-import { DesktopHeaderContext } from "../contexts/desktop-header-context";
+import { DesktopHeaderContext } from "../../contexts/desktop-header-context";
 
-import styles from "../styles/components/search-bar.module.css";
-import DropdownContainer from "./dropdown/dropdown-container";
+import styles from "../../styles/components/search-bar.module.css";
+import DropdownContainer from "./dropdown-container";
 
 const SearchBar = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);

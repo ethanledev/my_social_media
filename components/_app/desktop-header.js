@@ -4,9 +4,9 @@ import { GiStripedSun } from "react-icons/gi";
 import SearchBar from "./search-bar";
 import NavLinks from "./nav-links";
 
-import styles from "../styles/components/nav-bar.module.css";
+import styles from "../../styles/components/desktop-header.module.css";
 
-const NavBar = () => {
+const DesktopHeader = () => {
   return (
     <div className={styles.container}>
       <Link href="/">
@@ -20,4 +20,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default DesktopHeader;
