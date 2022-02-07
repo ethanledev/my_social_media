@@ -28,6 +28,11 @@
   display: block !important;
 }
 
+.dropdownWrapper {
+  position: absolute;
+  top: 100%;
+}
+
 .navLinkIcon {
   height: 100%;
   display: flex;

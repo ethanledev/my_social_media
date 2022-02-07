@@ -9,6 +9,11 @@
   position: relative;
 }
 
+.dropdownWrapper {
+  position: absolute;
+  top: 42px;
+}
+
 .inputContainer {
   display: flex;
   width: 100%;

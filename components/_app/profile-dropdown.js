@@ -1,10 +1,12 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 import navLinkIcons from "../../utils/nav-links/navLinkIcons";
 
 import styles from "../../styles/_app/profile-dropdown.module.css";
 
 const ProfileDropdown = () => {
+  const router = useRouter();
+
   const renderItems = () => {
     const items = [
       { pathName: "profile", text: "Profile" },
@@ -15,12 +17,14 @@ const ProfileDropdown = () => {
       const href =
         pathName === "profile" ? "/ape" : navLinkIcons[pathName].path;
       return (
-        <Link key={pathName} href={href}>
-          <a className={styles.itemContainer}>
-            <div className={styles.icon}>{navLinkIcons[pathName].outline}</div>
-            <div>{text}</div>
-          </a>
-        </Link>
+        <div
+          key={pathName}
+          className={styles.itemContainer}
+          onClick={() => router.push(href)}
+        >
+          <div className={styles.icon}>{navLinkIcons[pathName].outline}</div>
+          <div>{text}</div>
+        </div>
       );
     });
   };

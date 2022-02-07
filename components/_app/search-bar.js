@@ -22,13 +22,13 @@ const SearchBar = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div
-        className={styles.inputContainer}
-        tabIndex={1}
-        onFocus={handleInputOnFocus}
-        onBlur={handleInputOnBlur}
-      >
+    <div
+      className={styles.container}
+      tabIndex={0}
+      onFocus={handleInputOnFocus}
+      onBlur={handleInputOnBlur}
+    >
+      <div className={styles.inputContainer}>
         {!isInputFocused && <SearchIcon className={styles.searchInputIcon} />}
         <input
           className={styles.searchInput}
@@ -41,10 +41,19 @@ const SearchBar = () => {
           className={`${styles.searchInputIcon} ${
             isInputFocused ? "show" : "hide"
           }`}
-          onClick={() => setInput("")}
+          onClick={() => {
+            setInput("");
+            setIsInputFocused(false);
+          }}
         />
       </div>
-      {isInputFocused && <DropdownContainer dropdownType="search" />}
+      {isInputFocused && (
+        <div className={styles.dropdownWrapper}>
+          <DropdownContainer>
+            <div>Search</div>
+          </DropdownContainer>
+        </div>
+      )}
     </div>
   );
 };

@@ -47,15 +47,19 @@ const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
 
   // add notifications button and profile button
   const getDropdownContainer = (buttonType) => {
-    return dropdown === buttonType ? (
-      <DropdownContainer>
-        {buttonType === "profile" ? (
-          <ProfileDropdown />
-        ) : (
-          <div>Notifications</div>
-        )}
-      </DropdownContainer>
-    ) : null;
+    if (dropdown === buttonType) {
+      return (
+        <div className={styles.dropdownWrapper}>
+          <DropdownContainer>
+            {buttonType === "profile" ? (
+              <ProfileDropdown />
+            ) : (
+              <div>Notifications</div>
+            )}
+          </DropdownContainer>
+        </div>
+      );
+    }
   };
 
   const notificationsButton = (
@@ -86,9 +90,6 @@ const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
       >
         {getProfileIcon("s", currentPath === "/[username]")}
         {getDropdownContainer("profile")}
-        <DropdownContainer>
-          <ProfileDropdown />
-        </DropdownContainer>
       </div>
     </div>
   );
