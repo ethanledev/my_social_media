@@ -3,6 +3,7 @@ import {
   AiOutlineHome,
   AiFillMessage,
   AiOutlineMessage,
+  AiOutlineUser,
 } from "react-icons/ai";
 import { BsPlusSquareFill, BsPlusSquare } from "react-icons/bs";
 import {
@@ -10,6 +11,7 @@ import {
   IoNotificationsSharp,
   IoSearchOutline,
   IoSearchSharp,
+  IoBookmarkOutline,
 } from "react-icons/io5";
 
 const navLinkIcons = {
@@ -37,6 +39,14 @@ const navLinkIcons = {
     path: "/explore/search",
     fill: <IoSearchSharp />,
     outline: <IoSearchOutline />,
+  },
+  profile: {
+    path: "/[username]",
+    outline: <AiOutlineUser />,
+  },
+  saved: {
+    path: "/account/saved-posts",
+    outline: <IoBookmarkOutline />,
   },
 };
 

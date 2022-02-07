@@ -1,10 +1,10 @@
-import styles from "../../styles/components/dropdown-container.module.css";
+import styles from "../../styles/components/dropdown/dropdown-container.module.css";
 
-const DropdownContainer = ({ dropdownType }) => {
+const DropdownContainer = ({ children }) => {
   return (
     <div className={styles.container}>
       <div className={styles.triangleIndicator}></div>
-      <div className={styles.body}>{dropdownType}</div>
+      <div className={styles.body}>{children}</div>
     </div>
   );
 };

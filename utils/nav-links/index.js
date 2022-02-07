@@ -5,6 +5,7 @@ import { getProfileIcon } from "..";
 import DropdownContainer from "../../components/dropdown/dropdown-container";
 
 import styles from "../../styles/components/nav-links.module.css";
+import ProfileDropdown from "../../components/dropdown/profile-dropdown";
 
 const generateNavLinks = (pathNames, currentPath) => {
   const navLinks = pathNames.map((pathName) => {
@@ -25,7 +26,6 @@ const generateNavLinks = (pathNames, currentPath) => {
 };
 
 const generateMobileNavLinks = (currentPath) => {
-  console.log(currentPath);
   const pathNames = ["home", "messages", "createPost", "notifications"];
   const navLinks = generateNavLinks(pathNames, currentPath);
 
@@ -48,7 +48,13 @@ const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
   // add notifications button and profile button
   const getDropdownContainer = (buttonType) => {
     return dropdown === buttonType ? (
-      <DropdownContainer dropdownType={buttonType} />
+      <DropdownContainer>
+        {buttonType === "profile" ? (
+          <ProfileDropdown />
+        ) : (
+          <div>Notifications</div>
+        )}
+      </DropdownContainer>
     ) : null;
   };
 
