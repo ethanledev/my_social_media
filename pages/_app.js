@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 
 import DesktopHeader from "../components/_app/desktop-header";
 import NavLinks from "../components/_app/nav-links";
 import MobileHeader from "../components/_app/mobile-header";
-import DesktopHeaderProvider from "../contexts/desktop-header-context";
 
 import "../styles/globals.css";
 
@@ -26,9 +27,7 @@ const MyApp = ({ Component, pageProps }) => {
     if (windowWidth > 900) {
       return (
         <React.Fragment>
-          <DesktopHeaderProvider>
-            <DesktopHeader />
-          </DesktopHeaderProvider>
+          <DesktopHeader />
           <div className="pageContainer">
             <div>{windowWidth} px</div>
             <Component {...pageProps} />
@@ -49,7 +48,7 @@ const MyApp = ({ Component, pageProps }) => {
     }
   };
 
-  return renderApp();
+  return <Provider store={store}>{renderApp()}</Provider>;
 };
 
 export default MyApp;

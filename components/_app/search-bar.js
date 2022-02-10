@@ -1,24 +1,26 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { AiOutlineSearch as SearchIcon } from "react-icons/ai";
 import { TiDelete as DeleteButton } from "react-icons/ti";
-import { DesktopHeaderContext } from "../../contexts/desktop-header-context";
+import { useDispatch } from "react-redux";
+
+import DropdownContainer from "./dropdown-container";
+import { toggleDropdown } from "../../redux/dropdown/dropdown.actions";
 
 import styles from "../../styles/_app/search-bar.module.css";
-import DropdownContainer from "./dropdown-container";
 
 const SearchBar = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [input, setInput] = useState("");
-  const { toggleDropdown } = useContext(DesktopHeaderContext);
+  const dispatch = useDispatch();
 
   const handleInputOnFocus = () => {
     setIsInputFocused(true);
-    toggleDropdown("search");
+    dispatch(toggleDropdown("search"));
   };
 
   const handleInputOnBlur = () => {
     setIsInputFocused(false);
-    toggleDropdown("");
+    dispatch(toggleDropdown(""));
   };
 
   return (

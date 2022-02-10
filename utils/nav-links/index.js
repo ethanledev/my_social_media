@@ -3,6 +3,7 @@ import Link from "next/link";
 import navLinkIcons from "./navLinkIcons";
 import { getProfileIcon } from "..";
 import DropdownContainer from "../../components/_app/dropdown-container";
+import { toggleDropdown } from "../../redux/dropdown/dropdown.actions";
 
 import styles from "../../styles/_app/nav-links.module.css";
 import ProfileDropdown from "../../components/_app/profile-dropdown";
@@ -41,7 +42,7 @@ const generateMobileNavLinks = (currentPath) => {
   return navLinks;
 };
 
-const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
+const generateDesktopNavLinks = (currentPath, dropdown, dispatch) => {
   const pathNames = ["home", "messages", "createPost"];
   const navLinks = generateNavLinks(pathNames, currentPath);
 
@@ -67,8 +68,8 @@ const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
       <div
         className={styles.dropdownIconContainer}
         tabIndex={0}
-        onClick={() => toggleDropdown("notifications")}
-        onBlur={() => toggleDropdown("")}
+        onClick={() => dispatch(toggleDropdown("notifications"))}
+        onBlur={() => dispatch(toggleDropdown(""))}
       >
         {
           navLinkIcons.notifications[
@@ -85,8 +86,8 @@ const generateDesktopNavLinks = (currentPath, dropdown, toggleDropdown) => {
       <div
         className={styles.dropdownIconContainer}
         tabIndex={0}
-        onClick={() => toggleDropdown("profile")}
-        onBlur={() => toggleDropdown("")}
+        onClick={() => dispatch(toggleDropdown("profile"))}
+        onBlur={() => dispatch(toggleDropdown(""))}
       >
         {getProfileIcon("s", currentPath === "/[username]")}
         {getDropdownContainer("profile")}

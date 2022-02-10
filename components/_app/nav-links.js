@@ -1,32 +1,33 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import {
   generateDesktopNavLinks,
   generateMobileNavLinks,
 } from "../../utils/nav-links";
+import { selectDropdown } from "../../redux/dropdown/dropdown.selectors";
 
 import styles from "../../styles/_app/nav-links.module.css";
-import { useContext, useEffect, useRef, useState } from "react";
-import { DesktopHeaderContext } from "../../contexts/desktop-header-context";
 
 const NavLinks = ({ isMobile }) => {
   const router = useRouter();
   const currentPath = router.pathname;
   const [navLinks, setNavLinks] = useState([]);
-  const desktopHeaderContext = useContext(DesktopHeaderContext);
+  const dropdown = useSelector(selectDropdown);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const renderNavLinks = () => {
       if (isMobile) {
         return generateMobileNavLinks(currentPath);
       } else {
-        const { dropdown, toggleDropdown } = desktopHeaderContext;
-        return generateDesktopNavLinks(currentPath, dropdown, toggleDropdown);
+        return generateDesktopNavLinks(currentPath, dropdown, dispatch);
       }
     };
 
     setNavLinks(renderNavLinks());
-  }, [isMobile, currentPath, desktopHeaderContext]);
+  }, [isMobile, currentPath, dropdown, dispatch]);
 
   return <div className={styles.container}>{navLinks}</div>;
 };
