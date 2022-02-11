@@ -2,9 +2,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { GiStripedSun } from "react-icons/gi";
 
-import navLinkIcons from "../../utils/nav-links/navLinkIcons";
+import navLinkIcons from "../nav-links/utils/navLinkIcons";
 
-import styles from "../../styles/_app/mobile-header.module.css";
+import styles from "./mobile-header.module.css";
 
 const MobileHeader = () => {
   const router = useRouter();

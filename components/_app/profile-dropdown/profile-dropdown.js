@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 
-import navLinkIcons from "../../utils/nav-links/navLinkIcons";
+import navLinkIcons from "../nav-links/utils/navLinkIcons";
 
-import styles from "../../styles/_app/profile-dropdown.module.css";
+import styles from "./profile-dropdown.module.css";
 
 const ProfileDropdown = () => {
   const router = useRouter();

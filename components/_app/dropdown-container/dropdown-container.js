@@ -1,4 +1,4 @@
-import styles from "../../styles/_app/dropdown-container.module.css";
+import styles from "./dropdown-container.module.css";
 
 const DropdownContainer = ({ children }) => {
   return (

@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 import navLinkIcons from "./navLinkIcons";
-import { getProfileIcon } from "..";
-import DropdownContainer from "../../components/_app/dropdown-container";
-import { toggleDropdown } from "../../redux/dropdown/dropdown.actions";
+import { getProfileIcon } from "../../../../utils";
+import DropdownContainer from "../../dropdown-container/dropdown-container";
+import { toggleDropdown } from "../../../../redux/dropdown/dropdown.actions";
+import ProfileDropdown from "../../profile-dropdown/profile-dropdown";
 
-import styles from "../../styles/_app/nav-links.module.css";
-import ProfileDropdown from "../../components/_app/profile-dropdown";
+import styles from "../nav-links.module.css";
 
 const generateNavLinks = (pathNames, currentPath) => {
   const navLinks = pathNames.map((pathName) => {

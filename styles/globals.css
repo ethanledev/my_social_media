@@ -26,7 +26,7 @@ input {
   border: 2px solid black !important;
 }
 
-.appIcon {
+.appLogo {
   font-size: 60px;
 }
 
@@ -60,5 +60,7 @@ input {
   --border-gray: #dbdbdb;
   --background-gray: #fafafa;
   --input-bg-gray: #efefef;
-  --input-placeholder-gray: #c7c7c7;
+  --input-placeholder-gray: #8e8e8e;
+  --button-blue: #0095f6;
+  --disabled-button-blue: #b2dffc;
 }
