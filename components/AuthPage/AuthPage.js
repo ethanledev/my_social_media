@@ -9,6 +9,7 @@ import {
 } from "./AuthPage.utils";
 
 import styles from "./AuthPage.module.css";
+import Link from "next/link";
 
 const AuthPage = ({ authType }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -44,6 +45,10 @@ const AuthPage = ({ authType }) => {
         </form>
       </div>
       {renderAuthSwitchMessage(authType)}
+
+      <Link href="/">
+        <a>Home</a>
+      </Link>
     </div>
   );
 };
