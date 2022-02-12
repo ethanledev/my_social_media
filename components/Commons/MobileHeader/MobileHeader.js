@@ -15,7 +15,7 @@ const MobileHeader = () => {
       <div className={styles.spacer}></div>
       <Link href="/">
         <a>
-          <GiStripedSun className="appIcon" />
+          <GiStripedSun className="appLogo" />
         </a>
       </Link>
       <Link href="/explore/search">

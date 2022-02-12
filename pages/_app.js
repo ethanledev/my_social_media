@@ -1,54 +1,33 @@
-import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { Provider } from "react-redux";
-import { store } from "../redux/store";
+import Layout from "../components/Commons/Layout/Layout";
+import RouteGuard from "../components/Commons/RouteGuard/RouteGuard";
 
-import DesktopHeader from "../components/Commons/DesktopHeader/DesktopHeader";
-import NavLinks from "../components/Commons/NavLinks/NavLinks";
-import MobileHeader from "../components/Commons/MobileHeader/MobileHeader";
+import { store } from "../redux/store";
 
 import "../styles/globals.css";
 
 const MyApp = ({ Component, pageProps }) => {
-  const [windowWidth, setWindowWidth] = useState(0);
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    handleWindowResize();
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => window.removeEventListener("resize", handleWindowResize);
-  }, []);
+  const router = useRouter();
+  const { pathname } = router;
 
   const renderApp = () => {
-    if (windowWidth > 900) {
-      return (
-        <React.Fragment>
-          <DesktopHeader />
-          <div className="pageContainer">
-            <div>{windowWidth} px</div>
-            <Component {...pageProps} />
-          </div>
-        </React.Fragment>
-      );
+    if (pathname === "/account/[authType]") {
+      return <Component {...pageProps} />;
     } else {
       return (
-        <React.Fragment>
-          <MobileHeader />
-          <div className="pageContainer">
-            <div>{windowWidth} px</div>
-            <Component {...pageProps} />
-          </div>
-          <NavLinks isMobile={true} />
-        </React.Fragment>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       );
     }
   };
 
-  return <Provider store={store}>{renderApp()}</Provider>;
+  return (
+    <Provider store={store}>
+      <RouteGuard>{renderApp()}</RouteGuard>
+    </Provider>
+  );
 };
 
 export default MyApp;

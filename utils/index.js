@@ -74,3 +74,5 @@ export const navLinkIcons = {
     outline: <IoBookmarkOutline />,
   },
 };
+
+export const mobileOnlyPaths = ["/account/notifications", "explore/search"];
