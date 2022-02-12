@@ -1,3 +1,5 @@
-const Profile = () => <div>Profile</div>;
+import ProfilePage from "../components/ProfilePage/ProfilePage";
 
-export default Profile;
+const Page = () => <ProfilePage />;
+
+export default Page;

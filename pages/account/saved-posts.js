@@ -1,3 +1,5 @@
-const savedPost = () => <div>Saved Post</div>;
+import SavedPostsPage from "../../components/SavedPostsPage/SavedPostsPage";
 
-export default savedPost;
+const Page = () => <SavedPostsPage />;
+
+export default Page;

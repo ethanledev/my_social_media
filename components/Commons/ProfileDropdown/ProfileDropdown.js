@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 
-import navLinkIcons from "../nav-links/utils/navLinkIcons";
+import { navLinkIcons } from "../../../utils";
 
-import styles from "./profile-dropdown.module.css";
+import styles from "./ProfileDropdown.module.css";
 
 const ProfileDropdown = () => {
   const router = useRouter();
@@ -30,7 +30,7 @@ const ProfileDropdown = () => {
   };
 
   const handleLogOut = () => {
-    console.log("Log out");
+    router.push("/account/login");
   };
 
   return (

@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-import navLinkIcons from "./navLinkIcons";
-import { getProfileIcon } from "../../../../utils";
-import DropdownContainer from "../../dropdown-container/dropdown-container";
-import { toggleDropdown } from "../../../../redux/dropdown/dropdown.actions";
-import ProfileDropdown from "../../profile-dropdown/profile-dropdown";
+import { navLinkIcons } from "../../../utils";
+import { getProfileIcon } from "../../../utils";
+import DropdownContainer from "../DropdownContainer/DropdownContainer";
+import { toggleDropdown } from "../../../redux/dropdown/dropdown.actions";
+import ProfileDropdown from "../ProfileDropdown/ProfileDropdown";
 
-import styles from "../nav-links.module.css";
+import styles from "./NavLinks.module.css";
 
 const generateNavLinks = (pathNames, currentPath) => {
   const navLinks = pathNames.map((pathName) => {
@@ -27,7 +27,7 @@ const generateNavLinks = (pathNames, currentPath) => {
 };
 
 const generateMobileNavLinks = (currentPath) => {
-  const pathNames = ["home", "messages", "createPost", "notifications"];
+  const pathNames = ["home", "messenger", "createPost", "notifications"];
   const navLinks = generateNavLinks(pathNames, currentPath);
 
   // add profile picture Nav Link
@@ -43,7 +43,7 @@ const generateMobileNavLinks = (currentPath) => {
 };
 
 const generateDesktopNavLinks = (currentPath, dropdown, dispatch) => {
-  const pathNames = ["home", "messages", "createPost"];
+  const pathNames = ["home", "messenger", "createPost"];
   const navLinks = generateNavLinks(pathNames, currentPath);
 
   // add notifications button and profile button

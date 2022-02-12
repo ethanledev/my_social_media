@@ -3,10 +3,10 @@ import { AiOutlineSearch as SearchIcon } from "react-icons/ai";
 import { TiDelete as DeleteButton } from "react-icons/ti";
 import { useDispatch } from "react-redux";
 
-import DropdownContainer from "../dropdown-container/dropdown-container";
+import DropdownContainer from "../DropdownContainer/DropdownContainer";
 import { toggleDropdown } from "../../../redux/dropdown/dropdown.actions";
 
-import styles from "./search-bar.module.css";
+import styles from "./SearchBar.module.css";
 
 const SearchBar = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);

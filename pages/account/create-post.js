@@ -1,3 +1,5 @@
-const createPost = () => <div>Create Post</div>;
+import CreatePostPage from "../../components/CreatePostPage/CreatePostPage";
 
-export default createPost;
+const Page = () => <CreatePostPage />;
+
+export default Page;

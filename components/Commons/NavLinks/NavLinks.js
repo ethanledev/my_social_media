@@ -2,10 +2,13 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { generateDesktopNavLinks, generateMobileNavLinks } from "./utils";
+import {
+  generateDesktopNavLinks,
+  generateMobileNavLinks,
+} from "./NavLinks.utils";
 import { selectDropdown } from "../../../redux/dropdown/dropdown.selectors";
 
-import styles from "./nav-links.module.css";
+import styles from "./NavLinks.module.css";
 
 const NavLinks = ({ isMobile }) => {
   const router = useRouter();

@@ -1,3 +1,5 @@
-const Notifications = () => <div>Notifications</div>;
+import NotificationsPage from "../../components/NotificationsPage/NotificationsPage";
 
-export default Notifications;
+const Page = () => <NotificationsPage />;
+
+export default Page;

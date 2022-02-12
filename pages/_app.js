@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { store } from "../redux/store";
 
-import DesktopHeader from "../components/_app/desktop-header/desktop-header";
-import NavLinks from "../components/_app/nav-links/nav-links";
-import MobileHeader from "../components/_app/mobile-header/mobile-header";
+import DesktopHeader from "../components/Commons/DesktopHeader/DesktopHeader";
+import NavLinks from "../components/Commons/NavLinks/NavLinks";
+import MobileHeader from "../components/Commons/MobileHeader/MobileHeader";
 
 import "../styles/globals.css";
 

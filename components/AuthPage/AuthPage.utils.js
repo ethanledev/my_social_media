@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import styles from "../../styles/account/[authType].module.css";
+import styles from "./AuthPage.module.css";
 
 export const ON_CHANGE = "ON_CHANGE";
 
