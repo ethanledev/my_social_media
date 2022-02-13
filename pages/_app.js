@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { Provider } from "react-redux";
-import Layout from "../components/Commons/Layout/Layout";
-import RouteGuard from "../components/Commons/RouteGuard/RouteGuard";
+import Layout from "../components/elements/Layout/Layout";
+import RouteGuard from "../components/elements/RouteGuard/RouteGuard";
 
 import { store } from "../redux/store";
 

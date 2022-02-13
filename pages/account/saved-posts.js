@@ -1,4 +1,4 @@
-import SavedPostsPage from "../../components/SavedPostsPage/SavedPostsPage";
+import SavedPostsPage from "../../components/pages/SavedPostsPage/SavedPostsPage";
 
 const Page = () => <SavedPostsPage />;
 

@@ -5,6 +5,7 @@ import { getProfileIcon } from "../../../utils";
 import DropdownContainer from "../DropdownContainer/DropdownContainer";
 import { toggleDropdown } from "../../../redux/dropdown/dropdown.actions";
 import ProfileDropdown from "../ProfileDropdown/ProfileDropdown";
+import NotificationsDropdown from "../NotificationsDropdown/NotificationsDropdown";
 
 import styles from "./NavLinks.module.css";
 
@@ -50,34 +51,42 @@ const generateDesktopNavLinks = (currentPath, dropdown, dispatch) => {
   const getDropdownContainer = (buttonType) => {
     if (dropdown === buttonType) {
       return (
-        <div className={styles.dropdownWrapper}>
-          <DropdownContainer>
-            {buttonType === "profile" ? (
-              <ProfileDropdown />
-            ) : (
-              <div>Notifications</div>
-            )}
-          </DropdownContainer>
-        </div>
+        <DropdownContainer
+          topOffset={buttonType === "profile" ? "100%" : "70%"}
+        >
+          {buttonType === "profile" ? (
+            <ProfileDropdown />
+          ) : (
+            <NotificationsDropdown />
+          )}
+        </DropdownContainer>
       );
     }
   };
 
   const notificationsButton = (
-    <div key="notificationsButton" className={styles.dropdownButton}>
+    <div
+      key="notificationsButton"
+      className={styles.dropdownButton}
+      tabIndex={0}
+      onBlur={() => dispatch(toggleDropdown(""))}
+    >
       <div
         className={styles.dropdownIconContainer}
-        tabIndex={0}
         onClick={() => dispatch(toggleDropdown("notifications"))}
-        onBlur={() => dispatch(toggleDropdown(""))}
       >
         {
           navLinkIcons.notifications[
             dropdown === "notifications" ? "fill" : "outline"
           ]
         }
-        {getDropdownContainer("notifications")}
       </div>
+      {getDropdownContainer("notifications")}
+      {
+        <DropdownContainer topOffset="70%">
+          <NotificationsDropdown />
+        </DropdownContainer>
+      }
     </div>
   );
 

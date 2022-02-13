@@ -1,4 +1,4 @@
-import MessengerPage from "../../components/MessengerPage/MessengerPage";
+import MessengerPage from "../../components/pages/MessengerPage/MessengerPage";
 
 const Page = () => <MessengerPage />;
 

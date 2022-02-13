@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import DesktopHeader from "../../Commons/DesktopHeader/DesktopHeader";
-import NavLinks from "../../Commons/NavLinks/NavLinks";
-import MobileHeader from "../../Commons/MobileHeader/MobileHeader";
+import DesktopHeader from "../DesktopHeader/DesktopHeader";
+import NavLinks from "../NavLinks/NavLinks";
+import MobileHeader from "../MobileHeader/MobileHeader";
 import { useRouter } from "next/router";
 import { mobileOnlyPaths } from "../../../utils";
 
@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
   }, []);
 
   const renderPageWithLayout = () => {
-    if (windowWidth > 900) {
+    if (windowWidth > 1024) {
       // check if current path is a mobile only path, if true, redirect to "/"
       if (mobileOnlyPaths.indexOf(pathname) !== -1) {
         router.push("/");

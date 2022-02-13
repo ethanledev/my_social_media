@@ -1,4 +1,4 @@
-import CreatePostPage from "../../components/CreatePostPage/CreatePostPage";
+import CreatePostPage from "../../components/pages/CreatePostPage/CreatePostPage";
 
 const Page = () => <CreatePostPage />;
 

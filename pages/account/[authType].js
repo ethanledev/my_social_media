@@ -1,4 +1,4 @@
-import AuthPage from "../../components/AuthPage/AuthPage";
+import AuthPage from "../../components/pages/AuthPage/AuthPage";
 
 export const getStaticProps = async ({ params }) => {
   return {

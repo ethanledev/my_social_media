@@ -4,6 +4,7 @@ import { TiDelete as DeleteButton } from "react-icons/ti";
 import { useDispatch } from "react-redux";
 
 import DropdownContainer from "../DropdownContainer/DropdownContainer";
+import SearchDropdown from "../SearchDropdown/SearchDropdown";
 import { toggleDropdown } from "../../../redux/dropdown/dropdown.actions";
 
 import styles from "./SearchBar.module.css";
@@ -50,12 +51,13 @@ const SearchBar = () => {
         />
       </div>
       {isInputFocused && (
-        <div className={styles.dropdownWrapper}>
-          <DropdownContainer>
-            <div>Search</div>
-          </DropdownContainer>
-        </div>
+        <DropdownContainer topOffset="42px">
+          <SearchDropdown />
+        </DropdownContainer>
       )}
+      <DropdownContainer topOffset="42px">
+        <SearchDropdown />
+      </DropdownContainer>
     </div>
   );
 };

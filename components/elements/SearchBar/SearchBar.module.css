@@ -34,9 +34,3 @@
 .searchInput::placeholder {
   color: var(--input-placeholder-gray);
 }
-
-@media only screen and (max-width: 1000px) {
-  .container {
-    width: 350px;
-  }
-}

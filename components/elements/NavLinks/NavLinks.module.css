@@ -13,7 +13,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 
 .dropdownIconContainer {
@@ -21,6 +20,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .dropdownIconContainer svg,
@@ -39,13 +39,7 @@
   align-items: center;
 }
 
-@media only screen and (max-width: 1000px) {
-  .container {
-    width: 250px;
-  }
-}
-
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1024px) {
   .container {
     position: fixed;
     bottom: 0;

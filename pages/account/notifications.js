@@ -1,4 +1,4 @@
-import NotificationsPage from "../../components/NotificationsPage/NotificationsPage";
+import NotificationsPage from "../../components/pages/NotificationsPage/NotificationsPage";
 
 const Page = () => <NotificationsPage />;
 

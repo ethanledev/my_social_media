@@ -1,4 +1,4 @@
-import SearchPage from "../../components/SearchPage/SearchPage";
+import SearchPage from "../../components/pages/SearchPage/SearchPage";
 
 const Page = () => <SearchPage />;
 
