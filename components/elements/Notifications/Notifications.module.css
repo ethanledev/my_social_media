@@ -1,0 +1,31 @@
+.body {
+  background-color: white;
+  border-radius: 5px;
+  z-index: 2;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  background-color: white;
+  margin: 0 auto;
+  border: 1px solid var(--border-gray);
+  width: 700px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container.dropdown {
+  width: 350px;
+  position: absolute;
+  top: 85%;
+}
+
+.title {
+  font-size: 30px;
+  margin: 0;
+}

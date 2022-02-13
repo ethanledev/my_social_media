@@ -5,7 +5,7 @@ import { getProfileIcon } from "../../../utils";
 import DropdownContainer from "../DropdownContainer/DropdownContainer";
 import { toggleDropdown } from "../../../redux/dropdown/dropdown.actions";
 import ProfileDropdown from "../ProfileDropdown/ProfileDropdown";
-import NotificationsDropdown from "../NotificationsDropdown/NotificationsDropdown";
+import Notifications from "../Notifications/Notifications";
 
 import styles from "./NavLinks.module.css";
 
@@ -54,11 +54,7 @@ const generateDesktopNavLinks = (currentPath, dropdown, dispatch) => {
         <DropdownContainer
           topOffset={buttonType === "profile" ? "100%" : "70%"}
         >
-          {buttonType === "profile" ? (
-            <ProfileDropdown />
-          ) : (
-            <NotificationsDropdown />
-          )}
+          {buttonType === "profile" ? <ProfileDropdown /> : <Notifications />}
         </DropdownContainer>
       );
     }
@@ -82,11 +78,7 @@ const generateDesktopNavLinks = (currentPath, dropdown, dispatch) => {
         }
       </div>
       {getDropdownContainer("notifications")}
-      {
-        <DropdownContainer topOffset="70%">
-          <NotificationsDropdown />
-        </DropdownContainer>
-      }
+      {currentPath !== "/account/notifications" && <Notifications />}
     </div>
   );
 

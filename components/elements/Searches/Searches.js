@@ -2,7 +2,7 @@ import EmptyDropdown from "../EmptyDropdown/EmptyDropdown";
 
 const isEmpty = true;
 
-const SearchDropdown = () => {
+const Searches = () => {
   const renderDropdownItems = () => {
     if (isEmpty) {
       return <EmptyDropdown message="No recent searches." />;
@@ -12,4 +12,4 @@ const SearchDropdown = () => {
   return renderDropdownItems();
 };
 
-export default SearchDropdown;
+export default Searches;

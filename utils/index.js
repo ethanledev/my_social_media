@@ -75,4 +75,4 @@ export const navLinkIcons = {
   },
 };
 
-export const mobileOnlyPaths = ["/account/notifications", "/explore/search"];
+export const mobileOnlyPaths = ["/explore/search"];

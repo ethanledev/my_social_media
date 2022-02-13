@@ -56,6 +56,17 @@ input {
   visibility: visible;
 }
 
+.triangleIndicator {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: -5px;
+  transform: rotate(45deg);
+  z-index: 1;
+  border: 1px solid var(--border-gray);
+  background-color: white;
+}
+
 :root {
   --border-gray: #dbdbdb;
   --background-gray: #fafafa;
