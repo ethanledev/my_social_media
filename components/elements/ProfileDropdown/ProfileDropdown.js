@@ -35,12 +35,15 @@ const ProfileDropdown = () => {
 
   return (
     <div className={styles.container}>
-      {renderItems()}
-      <div
-        className={`${styles.logOutButton} ${styles.itemContainer}`}
-        onClick={handleLogOut}
-      >
-        Log out
+      <div className="triangleIndicator"></div>
+      <div className={styles.body}>
+        {renderItems()}
+        <div
+          className={`${styles.logOutButton} ${styles.itemContainer}`}
+          onClick={handleLogOut}
+        >
+          Log out
+        </div>
       </div>
     </div>
   );

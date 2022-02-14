@@ -28,6 +28,7 @@ input {
 
 .appLogo {
   font-size: 60px;
+  display: flex;
 }
 
 .hide {
@@ -74,4 +75,6 @@ input {
   --input-placeholder-gray: #8e8e8e;
   --button-blue: #0095f6;
   --disabled-button-blue: #b2dffc;
+  --active-button-blue: #e7f3ff;
+  --hover-active-button-blue: #dbe7f2;
 }

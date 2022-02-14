@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { navLinkIcons } from "../../../utils";
 import { getProfileIcon } from "../../../utils";
-import DropdownContainer from "../DropdownContainer/DropdownContainer";
 import { toggleDropdown } from "../../../redux/dropdown/dropdown.actions";
 import ProfileDropdown from "../ProfileDropdown/ProfileDropdown";
 import Notifications from "../Notifications/Notifications";
@@ -46,17 +45,12 @@ const generateMobileNavLinks = (currentPath) => {
 const generateDesktopNavLinks = (currentPath, dropdown, dispatch) => {
   const pathNames = ["home", "messenger", "createPost"];
   const navLinks = generateNavLinks(pathNames, currentPath);
+  const isOnNotificationsPage = currentPath === "/account/notifications";
 
   // add notifications button and profile button
   const getDropdownContainer = (buttonType) => {
     if (dropdown === buttonType) {
-      return (
-        <DropdownContainer
-          topOffset={buttonType === "profile" ? "100%" : "70%"}
-        >
-          {buttonType === "profile" ? <ProfileDropdown /> : <Notifications />}
-        </DropdownContainer>
-      );
+      return buttonType === "profile" ? <ProfileDropdown /> : <Notifications />;
     }
   };
 
@@ -68,17 +62,24 @@ const generateDesktopNavLinks = (currentPath, dropdown, dispatch) => {
       onBlur={() => dispatch(toggleDropdown(""))}
     >
       <div
+        style={{ cursor: isOnNotificationsPage ? "default" : "pointer" }}
         className={styles.dropdownIconContainer}
-        onClick={() => dispatch(toggleDropdown("notifications"))}
+        onClick={() => {
+          if (!isOnNotificationsPage) {
+            dispatch(toggleDropdown("notifications"));
+          }
+        }}
       >
         {
           navLinkIcons.notifications[
-            dropdown === "notifications" ? "fill" : "outline"
+            dropdown === "notifications" || isOnNotificationsPage
+              ? "fill"
+              : "outline"
           ]
         }
       </div>
       {getDropdownContainer("notifications")}
-      {currentPath !== "/account/notifications" && <Notifications />}
+      {/*!isOnNotificationsPage && <Notifications />*/}
     </div>
   );
 

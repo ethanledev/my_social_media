@@ -74,5 +74,3 @@ export const navLinkIcons = {
     outline: <IoBookmarkOutline />,
   },
 };
-
-export const mobileOnlyPaths = ["/explore/search"];

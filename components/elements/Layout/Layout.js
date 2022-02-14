@@ -3,13 +3,9 @@ import React, { useState, useEffect } from "react";
 import DesktopHeader from "../DesktopHeader/DesktopHeader";
 import NavLinks from "../NavLinks/NavLinks";
 import MobileHeader from "../MobileHeader/MobileHeader";
-import { useRouter } from "next/router";
-import { mobileOnlyPaths } from "../../../utils";
 
 const Layout = ({ children }) => {
   const [windowWidth, setWindowWidth] = useState(0);
-  const router = useRouter();
-  const { pathname } = router;
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -25,28 +21,17 @@ const Layout = ({ children }) => {
 
   const renderPageWithLayout = () => {
     if (windowWidth > 1024) {
-      // check if current path is a mobile only path, if true, redirect to "/"
-      if (mobileOnlyPaths.indexOf(pathname) !== -1) {
-        router.push("/");
-      }
-
       return (
         <React.Fragment>
           <DesktopHeader />
-          <div className="pageContainer">
-            <div>{windowWidth} px</div>
-            {children}
-          </div>
+          <div className="pageContainer">{children}</div>
         </React.Fragment>
       );
     } else {
       return (
         <React.Fragment>
           <MobileHeader />
-          <div className="pageContainer">
-            <div>{windowWidth} px</div>
-            {children}
-          </div>
+          <div className="pageContainer">{children}</div>
           <NavLinks isMobile={true} />
         </React.Fragment>
       );
