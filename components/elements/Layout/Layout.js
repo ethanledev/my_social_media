@@ -4,7 +4,7 @@ import DesktopHeader from "../DesktopHeader/DesktopHeader";
 import NavLinks from "../NavLinks/NavLinks";
 import MobileHeader from "../MobileHeader/MobileHeader";
 
-const Layout = ({ children }) => {
+const Layout = ({ Component, pageProps }) => {
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -24,14 +24,14 @@ const Layout = ({ children }) => {
       return (
         <React.Fragment>
           <DesktopHeader />
-          <div className="pageContainer">{children}</div>
+          <Component {...pageProps} windowWidth={windowWidth} />
         </React.Fragment>
       );
     } else {
       return (
         <React.Fragment>
           <MobileHeader />
-          <div className="pageContainer">{children}</div>
+          <Component {...pageProps} windowWidth={windowWidth} />
           <NavLinks isMobile={true} />
         </React.Fragment>
       );

@@ -8,6 +8,7 @@
   width: 100%;
   font-size: 30px;
   border-bottom: 1px solid var(--border-gray);
+  height: 65px;
 }
 
 .searchIcon {

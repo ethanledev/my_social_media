@@ -36,7 +36,10 @@ input {
 }
 
 .pageContainer {
-  margin-top: 80px;
+  height: 100vh;
+  padding-top: 65px;
+  display: flex;
+  justify-content: center;
 }
 
 .profilePicture {
@@ -66,6 +69,13 @@ input {
   z-index: 1;
   border: 1px solid var(--border-gray);
   background-color: white;
+}
+
+@media only screen and (max-width: 1024px) {
+  .pageContainer {
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
 }
 
 :root {
