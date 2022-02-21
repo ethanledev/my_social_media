@@ -3,7 +3,11 @@ import CompactPage from "../../components/pages/MessengerPage/CompactPage/Compac
 
 const Page = ({ windowWidth }) => {
   return (
-    <div className="pageContainer">
+    <div
+      className={`pageContainer ${
+        windowWidth <= 750 ? "mobileMessenger" : null
+      }`}
+    >
       {windowWidth > 750 ? <FullPage /> : <CompactPage />}
     </div>
   );

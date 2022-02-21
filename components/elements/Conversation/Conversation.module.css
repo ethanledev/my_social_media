@@ -1,6 +1,6 @@
 .container {
   height: 100%;
-  width: 500px;
+  width: 550px;
   border: 1px solid var(--border-gray);
 }
 
@@ -23,10 +23,6 @@
 .members {
   display: flex;
   align-items: center;
-}
-
-.spacer {
-  width: 30px;
 }
 
 @media only screen and (max-width: 1024px) {

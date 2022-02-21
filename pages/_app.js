@@ -15,7 +15,13 @@ const MyApp = ({ Component, pageProps }) => {
     if (pathname === "/account/[authType]") {
       return <Component {...pageProps} />;
     } else {
-      return <Layout Component={Component} pageProps={pageProps} />;
+      return (
+        <Layout
+          Component={Component}
+          pageProps={pageProps}
+          pathname={pathname}
+        />
+      );
     }
   };
 

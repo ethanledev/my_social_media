@@ -4,7 +4,7 @@ import DesktopHeader from "../DesktopHeader/DesktopHeader";
 import NavLinks from "../NavLinks/NavLinks";
 import MobileHeader from "../MobileHeader/MobileHeader";
 
-const Layout = ({ Component, pageProps }) => {
+const Layout = ({ Component, pageProps, pathname }) => {
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -27,6 +27,8 @@ const Layout = ({ Component, pageProps }) => {
           <Component {...pageProps} windowWidth={windowWidth} />
         </React.Fragment>
       );
+    } else if (pathname === "/account/messenger") {
+      return <Component {...pageProps} windowWidth={windowWidth} />;
     } else {
       return (
         <React.Fragment>

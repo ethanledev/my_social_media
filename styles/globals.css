@@ -35,6 +35,10 @@ input {
   visibility: hidden;
 }
 
+.mobileMessenger {
+  padding: 0 !important;
+}
+
 .pageContainer {
   height: 100vh;
   padding-top: 65px;
