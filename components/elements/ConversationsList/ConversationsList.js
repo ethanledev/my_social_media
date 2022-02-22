@@ -6,6 +6,7 @@ import styles from "./ConversationsList.module.css";
 
 const ConversationsList = ({ setTab }) => {
   const router = useRouter();
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -15,7 +16,7 @@ const ConversationsList = ({ setTab }) => {
           <div className={styles.spacer} />
         )}
         <div>hieu.hm.le</div>
-        <BiMessageSquareAdd />
+        <BiMessageSquareAdd onClick={() => setTab("create")} />
       </div>
       <div onClick={setTab ? () => setTab("noname") : null}>no name</div>
     </div>

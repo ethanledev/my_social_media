@@ -39,6 +39,18 @@ input {
   padding: 0 !important;
 }
 
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: -65px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pageContainer {
   height: 100vh;
   padding-top: 65px;
