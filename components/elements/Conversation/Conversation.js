@@ -3,15 +3,15 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 
 import styles from "./Conversation.module.css";
 
-const Conversation = ({ backToList }) => {
+const Conversation = ({ backToList, showInfo }) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.members}>
-          {backToList && <IoChevronBack onClick={() => backToList()} />}
+          {backToList && <IoChevronBack onClick={backToList} />}
           <div>Hieu Le</div>
         </div>
-        <AiOutlineInfoCircle />
+        <AiOutlineInfoCircle onClick={showInfo} />
       </div>
       <div></div>
     </div>

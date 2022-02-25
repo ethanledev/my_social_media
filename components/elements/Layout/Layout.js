@@ -27,7 +27,7 @@ const Layout = ({ Component, pageProps, pathname }) => {
           <Component {...pageProps} windowWidth={windowWidth} />
         </React.Fragment>
       );
-    } else if (pathname === "/account/messenger") {
+    } else if (pathname === "/account/messenger" && windowWidth <= 750) {
       return <Component {...pageProps} windowWidth={windowWidth} />;
     } else {
       return (

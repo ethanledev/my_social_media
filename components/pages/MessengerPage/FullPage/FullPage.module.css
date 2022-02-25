@@ -7,10 +7,21 @@
   position: relative;
 }
 
+.conversationContainer {
+  height: 100%;
+  width: 550px;
+  border: 1px solid var(--border-gray);
+  background-color: white;
+}
+
 @media only screen and (max-width: 1024px) {
   .container {
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
+  }
+
+  .conversationContainer {
+    width: 65%;
   }
 }

@@ -2,6 +2,15 @@
   width: 100%;
 }
 
+.footer {
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.footer div {
+  color: red;
+  padding: 15px 15px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -13,19 +22,25 @@
   font-weight: 500;
 }
 
+.header h2 {
+  font-size: 18px;
+}
+
+.header span {
+  font-size: 16px;
+  color: var(--button-blue);
+  cursor: pointer;
+}
+
 .header svg {
   font-size: 30px;
   cursor: pointer;
 }
 
 .members {
-  display: flex;
-  align-items: center;
+  border-bottom: 1px solid var(--border-gray);
 }
 
-@media only screen and (max-width: 750px) {
-  .container {
-    width: 100%;
-    border: none;
-  }
+.spacer {
+  width: 30px;
 }

@@ -4,8 +4,16 @@ import { IoChevronBack } from "react-icons/io5";
 
 import styles from "./ConversationsList.module.css";
 
-const ConversationsList = ({ setTab }) => {
+const ConversationsList = ({ setTab, setShowOverlay }) => {
   const router = useRouter();
+
+  const handleCreateMessage = () => {
+    if (setTab) {
+      setTab("create");
+    } else {
+      setShowOverlay(true);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -16,9 +24,9 @@ const ConversationsList = ({ setTab }) => {
           <div className={styles.spacer} />
         )}
         <div>hieu.hm.le</div>
-        <BiMessageSquareAdd onClick={() => setTab("create")} />
+        <BiMessageSquareAdd onClick={handleCreateMessage} />
       </div>
-      <div onClick={setTab ? () => setTab("noname") : null}>no name</div>
+      <div onClick={setTab ? () => setTab("conversation") : null}>no name</div>
     </div>
   );
 };

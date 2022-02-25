@@ -4,6 +4,7 @@
   border-top: 1px solid var(--border-gray);
   border-left: 1px solid var(--border-gray);
   border-bottom: 1px solid var(--border-gray);
+  background-color: white;
 }
 
 .header {
