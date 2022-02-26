@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Post from "../../elements/Post/Post";
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {
@@ -11,7 +12,14 @@ const HomePage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to Next.js!</h1>
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
       </main>
     </div>
   );

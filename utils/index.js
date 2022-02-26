@@ -13,12 +13,17 @@ import {
   IoSearchOutline,
   IoSearchSharp,
   IoBookmarkOutline,
+  IoBookmark,
 } from "react-icons/io5";
 
-export const getProfileIcon = (size, isActive, handleOnClick = null) => {
+export const getProfileIcon = (
+  size,
+  isActive = false,
+  handleOnClick = null
+) => {
   const sizes = {
     s: 35,
-    m: 35,
+    m: 45,
     l: 35,
     xl: 35,
   };
@@ -71,6 +76,7 @@ export const navLinkIcons = {
   },
   saved: {
     path: "/account/saved-posts",
+    fill: <IoBookmark />,
     outline: <IoBookmarkOutline />,
   },
 };
