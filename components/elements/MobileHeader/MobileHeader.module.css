@@ -9,6 +9,8 @@
   font-size: 30px;
   border-bottom: 1px solid var(--border-gray);
   height: 65px;
+  background-color: white;
+  z-index: 1;
 }
 
 .searchIcon {

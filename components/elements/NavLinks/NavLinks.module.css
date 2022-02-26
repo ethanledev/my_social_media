@@ -48,5 +48,7 @@
     padding: 0 20px;
     border-top: 1px solid var(--border-gray);
     font-size: 27px;
+    background-color: white;
+    z-index: 1;
   }
 }
