@@ -18,13 +18,22 @@ const MobileHeader = () => {
           <GiStripedSun />
         </a>
       </Link>
-      <Link href="/explore/search">
-        <a className={styles.searchIcon}>
-          {currentPath === "/explore/search"
-            ? navLinkIcons.search.fill
-            : navLinkIcons.search.outline}
-        </a>
-      </Link>
+      <div>
+        <Link href="/explore/search">
+          <a className={styles.navLinkIcon}>
+            {currentPath === "/explore/search"
+              ? navLinkIcons.search.fill
+              : navLinkIcons.search.outline}
+          </a>
+        </Link>
+        <Link href="/account/saved-posts">
+          <a className={styles.navLinkIcon}>
+            {currentPath === "/account/saved-posts"
+              ? navLinkIcons.saved.fill
+              : navLinkIcons.saved.outline}
+          </a>
+        </Link>
+      </div>
     </div>
   );
 };

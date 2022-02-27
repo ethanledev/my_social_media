@@ -91,7 +91,11 @@ const generateDesktopNavLinks = (currentPath, dropdown, dispatch) => {
         onClick={() => dispatch(toggleDropdown("profile"))}
         onBlur={() => dispatch(toggleDropdown(""))}
       >
-        {getProfileIcon("s", currentPath === "/[username]")}
+        {getProfileIcon(
+          "s",
+          currentPath === "/[username]" ||
+            currentPath === "/account/saved-posts"
+        )}
         {getDropdownContainer("profile")}
       </div>
     </div>

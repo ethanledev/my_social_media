@@ -13,12 +13,13 @@
   z-index: 1;
 }
 
-.searchIcon {
+.navLinkIcon {
   width: 20%;
   text-align: right;
+  margin-left: 10px;
 }
 
 .spacer {
-  width: 20%;
+  width: 80px;
   height: 1px;
 }

@@ -4,7 +4,7 @@ import styles from "./PostList.module.css";
 const PostList = () => {
   const renderPostTiles = () => {
     let posts = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 43; i++) {
       posts.push(<PostTile key={i} />);
     }
 
