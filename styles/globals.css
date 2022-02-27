@@ -6,10 +6,6 @@
   outline: none;
 }
 
-html {
-  overflow-y: scroll;
-}
-
 html,
 body {
   padding: 0;
@@ -18,6 +14,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--background-gray);
   z-index: 0;
+  margin-bottom: 10px;
 }
 
 a {
@@ -96,10 +93,6 @@ input {
 }
 
 @media only screen and (max-width: 1024px) {
-  .pageContainer {
-    padding-top: 65px;
-    padding-bottom: 65px;
-  }
 }
 
 :root {

@@ -20,15 +20,15 @@ const Layout = ({ Component, pageProps, pathname }) => {
   }, []);
 
   const renderPageWithLayout = () => {
-    if (windowWidth > 1024) {
+    if (pathname === "/account/messenger" && windowWidth <= 750) {
+      return <Component {...pageProps} windowWidth={windowWidth} />;
+    } else if (windowWidth > 1024) {
       return (
         <React.Fragment>
           <DesktopHeader />
           <Component {...pageProps} windowWidth={windowWidth} />
         </React.Fragment>
       );
-    } else if (pathname === "/account/messenger" && windowWidth <= 750) {
-      return <Component {...pageProps} windowWidth={windowWidth} />;
     } else {
       return (
         <React.Fragment>

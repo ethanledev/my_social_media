@@ -1,8 +1,8 @@
 import ProfilePage from "../components/pages/ProfilePage/ProfilePage";
 
-const Page = () => (
+const Page = ({ windowWidth }) => (
   <div className="pageContainer">
-    <ProfilePage />
+    <ProfilePage windowWidth={windowWidth} />
   </div>
 );
 

@@ -1,7 +1,13 @@
-.container {
-  padding-top: 20px;
+.main {
+  padding: 10px 5px 0px 5px;
 }
 
-.main {
-  padding: 0 5px;
+.posts {
+  padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .posts {
+    padding-bottom: 65px;
+  }
 }

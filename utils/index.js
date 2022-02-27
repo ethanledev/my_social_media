@@ -24,12 +24,15 @@ export const getProfileIcon = (
   const sizes = {
     s: 35,
     m: 45,
-    l: 35,
-    xl: 35,
+    l: 90,
+    xl: 170,
   };
 
   const profileIcon = (
-    <div className="profilePicture">
+    <div
+      className="profilePicture"
+      style={{ width: sizes[size], height: sizes[size] }}
+    >
       <Image
         src="/TK-Bored-Ape.jpg"
         width={sizes[size]}
