@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 750px) {
+  .container {
+    grid-gap: 5px;
+  }
+}

@@ -1,11 +1,11 @@
 import { Fragment, useState } from "react";
-
-import { getProfileIcon } from "../../../utils";
 import { FaUser } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 
+import { getProfileIcon } from "../../../utils";
+import PostList from "../../elements/PostList/PostList";
+
 import styles from "./ProfilePage.module.css";
-import Image from "next/image";
 
 const ProfilePage = ({ windowWidth }) => {
   const [isFollowing, setIsFollowing] = useState(false);
@@ -44,24 +44,6 @@ const ProfilePage = ({ windowWidth }) => {
       </div>
     </div>
   );
-
-  const renderPosts = () => {
-    let posts = [];
-    for (let i = 0; i < 8; i++) {
-      posts.push(
-        <Image
-          key={i}
-          src="/post.jpg"
-          layout="responsive"
-          width={0}
-          height={0}
-          alt="post"
-        />
-      );
-    }
-
-    return posts;
-  };
 
   const renderProfilePicture = () => {
     if (windowWidth > 750) {
@@ -107,7 +89,7 @@ const ProfilePage = ({ windowWidth }) => {
         {windowWidth <= 350 && renderNumbersInfo()}
         {windowWidth <= 750 && renderBio()}
         <hr />
-        <div className={styles.posts}>{renderPosts()}</div>
+        <PostList />
       </main>
     </Fragment>
   );
