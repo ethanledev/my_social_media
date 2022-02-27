@@ -16,10 +16,6 @@ const HomePage = () => {
         <Post />
         <Post />
         <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
       </main>
     </div>
   );

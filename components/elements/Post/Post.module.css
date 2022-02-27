@@ -25,12 +25,12 @@
 .container {
   background-color: white;
   border: 1px solid var(--border-gray);
-  margin-top: 10px;
+  margin-bottom: 10px;
   width: 600px;
 }
 
 .displayName {
-  font-weight: 500;
+  color: var(--input-placeholder-gray);
 }
 
 .header {
@@ -87,7 +87,7 @@
 }
 
 .username {
-  color: var(--input-placeholder-gray);
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 750px) {
