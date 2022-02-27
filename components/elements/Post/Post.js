@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { MdOutlineModeComment } from "react-icons/md";
+import { RiMessage3Line } from "react-icons/ri";
 import { FiSend } from "react-icons/fi";
 import { IoBookmarkOutline } from "react-icons/io5";
 
@@ -29,7 +29,7 @@ const Post = () => {
         <div className={styles.interactionsContainer}>
           <div className={styles.interactions}>
             <AiOutlineHeart />
-            <MdOutlineModeComment />
+            <RiMessage3Line />
             <FiSend />
           </div>
           <IoBookmarkOutline />
