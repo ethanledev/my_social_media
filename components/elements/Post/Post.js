@@ -1,9 +1,12 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState } from "react";
+
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { RiMessage3Line } from "react-icons/ri";
 import { FiSend } from "react-icons/fi";
-import { IoBookmarkOutline } from "react-icons/io5";
+import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
 import {
   FaChevronCircleLeft,
   FaChevronCircleRight,
@@ -13,14 +16,14 @@ import {
 import { getProfileIcon } from "../../../utils";
 
 import styles from "./Post.module.css";
-import { useRouter } from "next/router";
-import { useRef, useState } from "react";
 
 const Post = () => {
   const router = useRouter();
   const imageNum = 6;
   const [imageIndex, setImageIdex] = useState(0);
-  const [showHeart, setShowHeart] = useState(false);
+  const [heartAnimation, setHeartAnimation] = useState(null);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   const renderDots = () => {
     let dots = [];
@@ -51,12 +54,29 @@ const Post = () => {
   };
 
   const handleDoubleClick = (e) => {
-    if (!showHeart) {
+    if (heartAnimation === null) {
       if (e.target === e.currentTarget) {
-        setShowHeart(true);
-        setTimeout(() => setShowHeart(false), 1000);
+        setHeartAnimation(styles.showHeart);
+        if (!isLiked) {
+          setIsLiked(true);
+        }
+        setTimeout(() => {
+          setHeartAnimation(styles.hideHeart);
+          setTimeout(() => {
+            console.log("null");
+            setHeartAnimation(null);
+          }, 500);
+        }, 1000);
       }
     }
+  };
+
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+  };
+
+  const handleSavePostClick = () => {
+    setIsSaved(!isSaved);
   };
 
   return (
@@ -81,9 +101,9 @@ const Post = () => {
             style={{ visibility: imageIndex < 1 ? "hidden" : "visible" }}
             onClick={() => changeImage("back")}
           />
-          <AiFillHeart
-            className={`${styles.heart} ${showHeart ? styles.showHeart : null}`}
-          />
+          {heartAnimation && (
+            <AiFillHeart className={`${styles.heart} ${heartAnimation}`} />
+          )}
           <FaChevronCircleRight
             style={{
               visibility: imageIndex === imageNum - 1 ? "hidden" : "visible",
@@ -95,13 +115,24 @@ const Post = () => {
       <div className={styles.postContent}>
         <div className={styles.interactionsContainer}>
           <div className={styles.interactions}>
-            <AiOutlineHeart />
+            {isLiked ? (
+              <AiFillHeart
+                className={styles.likedHeart}
+                onClick={handleLikeClick}
+              />
+            ) : (
+              <AiOutlineHeart onClick={handleLikeClick} />
+            )}
             <RiMessage3Line />
             <FiSend />
           </div>
           <div className={styles.dots}>{renderDots()}</div>
           <div className={styles.saveButton}>
-            <IoBookmarkOutline />
+            {isSaved ? (
+              <IoBookmark onClick={handleSavePostClick} />
+            ) : (
+              <IoBookmarkOutline onClick={handleSavePostClick} />
+            )}
           </div>
         </div>
         <div className={styles.likes}>242 likes</div>
