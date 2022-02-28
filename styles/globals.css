@@ -14,7 +14,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--background-gray);
   z-index: 0;
-  margin-bottom: 10px;
+  height: 100vh;
 }
 
 a {
