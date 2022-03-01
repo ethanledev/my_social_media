@@ -15,6 +15,7 @@ body {
   background-color: var(--background-gray);
   z-index: 0;
   height: 100vh;
+  overflow: auto;
 }
 
 a {

@@ -21,7 +21,7 @@ const Post = () => {
   const router = useRouter();
   const imageNum = 6;
   const [imageIndex, setImageIdex] = useState(0);
-  const [heartAnimation, setHeartAnimation] = useState(null);
+  const [showHeart, setShowHeart] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
@@ -54,19 +54,14 @@ const Post = () => {
   };
 
   const handleDoubleClick = (e) => {
-    if (heartAnimation === null) {
+    if (!isLiked) {
+      setIsLiked(true);
+    }
+
+    if (!showHeart) {
       if (e.target === e.currentTarget) {
-        setHeartAnimation(styles.showHeart);
-        if (!isLiked) {
-          setIsLiked(true);
-        }
-        setTimeout(() => {
-          setHeartAnimation(styles.hideHeart);
-          setTimeout(() => {
-            console.log("null");
-            setHeartAnimation(null);
-          }, 500);
-        }, 1000);
+        setShowHeart(true);
+        setTimeout(() => setShowHeart(false), 1500);
       }
     }
   };
@@ -101,9 +96,7 @@ const Post = () => {
             style={{ visibility: imageIndex < 1 ? "hidden" : "visible" }}
             onClick={() => changeImage("back")}
           />
-          {heartAnimation && (
-            <AiFillHeart className={`${styles.heart} ${heartAnimation}`} />
-          )}
+          {showHeart && <AiFillHeart className={styles.heart} />}
           <FaChevronCircleRight
             style={{
               visibility: imageIndex === imageNum - 1 ? "hidden" : "visible",
