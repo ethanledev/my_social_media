@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { Fragment } from "react";
+
 import Post from "../../elements/Post/Post";
+
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {
@@ -14,10 +16,10 @@ const HomePage = () => {
 
       <main className={styles.main}>
         <div className={styles.posts}>
-          <Post />
-          <Post />
-          <Post />
-          <Post />
+          <Post isFullPost={false} />
+          <Post isFullPost={false} />
+          <Post isFullPost={false} />
+          <Post isFullPost={false} />
         </div>
       </main>
     </Fragment>

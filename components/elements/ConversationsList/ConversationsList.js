@@ -1,17 +1,20 @@
 import { useRouter } from "next/router";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import { IoChevronBack } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { showCreateConversation } from "../../../redux/overlay/overlay.actions";
 
 import styles from "./ConversationsList.module.css";
 
-const ConversationsList = ({ setTab, setShowOverlay }) => {
+const ConversationsList = ({ setTab }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleCreateMessage = () => {
     if (setTab) {
       setTab("create");
     } else {
-      setShowOverlay(true);
+      dispatch(showCreateConversation());
     }
   };
 

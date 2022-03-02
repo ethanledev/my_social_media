@@ -19,7 +19,7 @@ const dropdownReducer = (state = INITIAL_STATE, action) => {
         dropdownType: toggleDropdown(state.dropdownType, action.payload),
       };
     default:
-      return INITIAL_STATE;
+      return state;
   }
 };
 

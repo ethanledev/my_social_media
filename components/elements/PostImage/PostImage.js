@@ -17,7 +17,6 @@ const PostImage = ({ isFullPost, isLiked, likePost }) => {
 
   const handleDoubleClick = (e) => {
     if (e.target === e.currentTarget && dbClickActive) {
-      console.log("dbClick");
       setDbClickActive(false);
       if (!isLiked) {
         likePost();

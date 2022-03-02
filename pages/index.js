@@ -1,8 +1,8 @@
 import HomePage from "../components/pages/HomePage/HomePage";
 
-const Page = () => (
+const Page = ({ windowWidth }) => (
   <div className="pageContainer">
-    <HomePage />
+    <HomePage windowWidth={windowWidth} />
   </div>
 );
 

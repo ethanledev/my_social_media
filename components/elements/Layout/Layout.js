@@ -3,9 +3,13 @@ import React, { useState, useEffect } from "react";
 import DesktopHeader from "../DesktopHeader/DesktopHeader";
 import NavLinks from "../NavLinks/NavLinks";
 import MobileHeader from "../MobileHeader/MobileHeader";
+import Overlay from "../Overlay/Overlay";
+import { useSelector } from "react-redux";
+import { selectOverlayType } from "../../../redux/overlay/overlay.selectors";
 
 const Layout = ({ Component, pageProps, pathname }) => {
   const [windowWidth, setWindowWidth] = useState(0);
+  const overlayType = useSelector(selectOverlayType);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -22,19 +26,13 @@ const Layout = ({ Component, pageProps, pathname }) => {
   const renderPageWithLayout = () => {
     if (pathname === "/account/messenger" && windowWidth <= 750) {
       return <Component {...pageProps} windowWidth={windowWidth} />;
-    } else if (windowWidth > 1024) {
-      return (
-        <React.Fragment>
-          <DesktopHeader />
-          <Component {...pageProps} windowWidth={windowWidth} />
-        </React.Fragment>
-      );
     } else {
       return (
         <React.Fragment>
-          <MobileHeader />
+          {windowWidth > 750 && overlayType !== null && <Overlay />}
+          {windowWidth > 1024 ? <DesktopHeader /> : <MobileHeader />}
           <Component {...pageProps} windowWidth={windowWidth} />
-          <NavLinks isMobile={true} />
+          {windowWidth <= 1024 && <NavLinks isMobile={true} />}
         </React.Fragment>
       );
     }

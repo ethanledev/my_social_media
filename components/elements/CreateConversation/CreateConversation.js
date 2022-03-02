@@ -1,15 +1,18 @@
 import { useEffect, useRef } from "react";
 import { IoMdClose } from "react-icons/io";
 import { IoChevronBack } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { hideOverlay } from "../../../redux/overlay/overlay.actions";
 
 import styles from "./CreateConversation.module.css";
 
-const CreateConversation = ({ closeModal, backToList }) => {
+const CreateConversation = ({ backToList }) => {
   const containerRef = useRef();
+  const dispatch = useDispatch();
 
   const handleOnBlur = (e) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
-      closeModal();
+      dispatch(hideOverlay());
     }
   };
 
@@ -27,10 +30,10 @@ const CreateConversation = ({ closeModal, backToList }) => {
       onBlur={(e) => handleOnBlur(e)}
     >
       <div className={styles.header}>
-        {closeModal ? (
-          <IoMdClose onClick={closeModal} />
-        ) : (
+        {backToList ? (
           <IoChevronBack onClick={() => backToList()} />
+        ) : (
+          <IoMdClose onClick={() => dispatch(hideOverlay())} />
         )}
         <h1 className={styles.title}>New Message</h1>
         <div className={styles.nextButton}>Next</div>
