@@ -1,0 +1,38 @@
+.container {
+  width: 100%;
+}
+
+.interactionsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 27px;
+  user-select: none;
+}
+
+.interactionsContainer svg {
+  cursor: pointer;
+}
+
+.interactions {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.likedHeart {
+  color: red;
+  animation: bounceHeart 1s;
+}
+
+.likes {
+  padding: 0 0 10px 0;
+  font-weight: 500;
+}
+
+.saveButton {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
