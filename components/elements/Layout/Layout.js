@@ -6,14 +6,18 @@ import MobileHeader from "../MobileHeader/MobileHeader";
 import Overlay from "../Overlay/Overlay";
 import { useSelector } from "react-redux";
 import { selectOverlayType } from "../../../redux/overlay/overlay.selectors";
+import { selectWindowWidth } from "../../../redux/app/app.selectors";
+import { useDispatch } from "react-redux";
+import { changeWindowWidth } from "../../../redux/app/app.actions";
 
 const Layout = ({ Component, pageProps, pathname }) => {
-  const [windowWidth, setWindowWidth] = useState(0);
   const overlayType = useSelector(selectOverlayType);
+  const windowWidth = useSelector(selectWindowWidth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
+      dispatch(changeWindowWidth(window.innerWidth));
     };
 
     handleWindowResize();
@@ -21,7 +25,7 @@ const Layout = ({ Component, pageProps, pathname }) => {
     window.addEventListener("resize", handleWindowResize);
 
     return () => window.removeEventListener("resize", handleWindowResize);
-  }, []);
+  }, [dispatch]);
 
   const renderPageWithLayout = () => {
     if (pathname === "/account/messenger" && windowWidth <= 750) {

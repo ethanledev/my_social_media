@@ -6,9 +6,12 @@ import { getProfileIcon } from "../../../utils";
 import PostList from "../../elements/PostList/PostList";
 
 import styles from "./ProfilePage.module.css";
+import { useSelector } from "react-redux";
+import { selectWindowWidth } from "../../../redux/app/app.selectors";
 
-const ProfilePage = ({ windowWidth }) => {
+const ProfilePage = () => {
   const [isFollowing, setIsFollowing] = useState(false);
+  const windowWidth = useSelector(selectWindowWidth);
 
   const handleFollow = () => {
     setIsFollowing(true);
