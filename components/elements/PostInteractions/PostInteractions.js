@@ -3,7 +3,10 @@ import { RiMessage3Line } from "react-icons/ri";
 import { FiSend } from "react-icons/fi";
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
 
+import { showPost } from "../../../redux/overlay/overlay.actions";
+
 import styles from "./PostInteractions.module.css";
+import { useDispatch } from "react-redux";
 
 const PostInteractions = ({
   isLiked,
@@ -11,6 +14,8 @@ const PostInteractions = ({
   isSaved,
   toggleSavePost,
 }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className={styles.container}>
       <div className={styles.interactionsContainer}>
@@ -23,7 +28,7 @@ const PostInteractions = ({
           ) : (
             <AiOutlineHeart onClick={toggleLikePost} />
           )}
-          <RiMessage3Line />
+          <RiMessage3Line onClick={() => dispatch(showPost())} />
           <FiSend />
         </div>
         <div className={styles.saveButton}>

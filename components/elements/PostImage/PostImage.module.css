@@ -7,6 +7,10 @@
   position: relative;
   user-select: none;
 }
+.arrows {
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 1px lightgray;
+}
 
 .dots {
   width: 100%;
@@ -14,12 +18,17 @@
   color: gray;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .dots svg {
   margin-right: 4px;
   cursor: default !important;
+}
+
+.dots.full {
+  position: absolute;
+  bottom: 20px;
 }
 
 .dots.preview {

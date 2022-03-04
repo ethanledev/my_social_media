@@ -14,6 +14,8 @@ const PostImage = ({ isFullPost, isLiked, likePost }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [showHeart, setShowHeart] = useState(false);
   const [dbClickActive, setDbClickActive] = useState(true);
+  const width = isFullPost ? 1000 : 600;
+  const height = isFullPost ? 1200 : 600;
 
   const handleDoubleClick = (e) => {
     if (e.target === e.currentTarget && dbClickActive) {
@@ -63,18 +65,20 @@ const PostImage = ({ isFullPost, isLiked, likePost }) => {
   return (
     <div className={styles.container}>
       <div className={styles.image}>
-        <Image src="/post.jpg" width={600} height={600} alt="post" />
+        <Image src="/post.jpg" width={width} height={height} alt="post" />
       </div>
       <div
         className={styles.overlay}
         onDoubleClick={(e) => handleDoubleClick(e)}
       >
         <FaChevronCircleLeft
+          className={styles.arrows}
           style={{ visibility: imageIndex < 1 ? "hidden" : "visible" }}
           onClick={() => changeImage("back")}
         />
         {showHeart && <AiFillHeart className={styles.heart} />}
         <FaChevronCircleRight
+          className={styles.arrows}
           style={{
             visibility: imageIndex === imageNum - 1 ? "hidden" : "visible",
           }}
