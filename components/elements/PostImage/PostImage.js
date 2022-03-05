@@ -9,13 +9,15 @@ import { AiFillHeart } from "react-icons/ai";
 
 import styles from "./PostImage.module.css";
 
+const imageList = ["post1", "post2", "post3", "post4", "post5", "post6"];
+
 const PostImage = ({ isFullPost, isLiked, likePost }) => {
   const imageNum = 6;
   const [imageIndex, setImageIndex] = useState(0);
   const [showHeart, setShowHeart] = useState(false);
   const [dbClickActive, setDbClickActive] = useState(true);
   const width = isFullPost ? 1000 : 600;
-  const height = isFullPost ? 1200 : 600;
+  const height = isFullPost ? 1400 : 1000;
 
   const handleDoubleClick = (e) => {
     if (e.target === e.currentTarget && dbClickActive) {
@@ -65,7 +67,12 @@ const PostImage = ({ isFullPost, isLiked, likePost }) => {
   return (
     <div className={styles.container}>
       <div className={styles.image}>
-        <Image src="/post.jpg" width={width} height={height} alt="post" />
+        <Image
+          src={`/${imageList[imageIndex]}.png`}
+          width={width}
+          height={height}
+          alt="post"
+        />
       </div>
       <div
         className={styles.overlay}
