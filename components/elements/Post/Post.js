@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { forwardRef, Fragment, useState } from "react";
 
 import PostHeader from "../PostHeader/PostHeader";
 
@@ -7,8 +7,10 @@ import PostImage from "../PostImage/PostImage";
 import PostInteractions from "../PostInteractions/PostInteractions";
 import { useDispatch } from "react-redux";
 import { showPost } from "../../../redux/overlay/overlay.actions";
+import CommentBox from "../CommentBox/CommentBox";
 
-const Post = ({ isFullPost }) => {
+const Post = (props, ref) => {
+  const { isFullPost } = props;
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ const Post = ({ isFullPost }) => {
 
   const renderCommentsOverview = () => (
     <Fragment>
-      <div className={styles.comment}>
+      <div className={styles.overViewComment}>
         <span>hieuhmle</span>
         <span>amazing!</span>
       </div>
@@ -37,28 +39,51 @@ const Post = ({ isFullPost }) => {
   );
 
   if (isFullPost) {
-    return <div>Post</div>;
+    return (
+      <div className={styles.fullPostContainer} ref={ref}>
+        <PostImage
+          isLiked={isLiked}
+          likePost={toggleLikePost}
+          isFullPost={true}
+        />
+        <div className={styles.fullPostContent}>
+          <PostHeader />
+          <div className={styles.comments}></div>
+          <div className={styles.interactions}>
+            <PostInteractions
+              isLiked={isLiked}
+              isSaved={isSaved}
+              toggleLikePost={toggleLikePost}
+              toggleSavePost={toggleSavePost}
+            />
+          </div>
+          <CommentBox />
+        </div>
+      </div>
+    );
   } else {
     return (
-      <div className={styles.container}>
+      <div className={styles.overviewContainer}>
         <PostHeader />
         <PostImage
           isLiked={isLiked}
           likePost={toggleLikePost}
           isFullPost={false}
         />
-        <div className={styles.postContent}>
+        <div className={styles.overviewContent}>
           <PostInteractions
             isLiked={isLiked}
             isSaved={isSaved}
             toggleLikePost={toggleLikePost}
             toggleSavePost={toggleSavePost}
           />
-          <div className={styles.comments}>{renderCommentsOverview()}</div>
+          <div className={styles.overViewComments}>
+            {renderCommentsOverview()}
+          </div>
         </div>
       </div>
     );
   }
 };
 
-export default Post;
+export default forwardRef(Post);
