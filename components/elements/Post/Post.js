@@ -13,7 +13,8 @@ const Post = (props, ref) => {
   const { isFullPost } = props;
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  const postRef = useRef();
+  const overviewPostRef = useRef();
+  const fullPostRef = useRef();
   const dispatch = useDispatch();
 
   const toggleLikePost = () => {
@@ -42,12 +43,12 @@ const Post = (props, ref) => {
   if (isFullPost) {
     return (
       <div className={styles.fullPostContainer} ref={ref}>
-        <div className={styles.fullPost} ref={postRef}>
+        <div className={styles.fullPost} ref={fullPostRef}>
           <PostImage
             isLiked={isLiked}
             likePost={toggleLikePost}
             isFullPost={true}
-            postRef={postRef}
+            postRef={fullPostRef}
           />
           <div className={styles.fullPostContent}>
             <PostHeader />
@@ -67,13 +68,13 @@ const Post = (props, ref) => {
     );
   } else {
     return (
-      <div className={styles.overviewContainer} ref={postRef}>
+      <div className={styles.overviewContainer} ref={overviewPostRef}>
         <PostHeader />
         <PostImage
           isLiked={isLiked}
           likePost={toggleLikePost}
           isFullPost={false}
-          postRef={postRef}
+          postRef={overviewPostRef}
         />
         <div className={styles.overviewContent}>
           <PostInteractions

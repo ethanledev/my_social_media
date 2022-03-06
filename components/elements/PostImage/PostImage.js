@@ -9,6 +9,8 @@ import { AiFillHeart } from "react-icons/ai";
 import "react-slideshow-image/dist/styles.css";
 
 import styles from "./PostImage.module.css";
+import { useSelector } from "react-redux";
+import { selectWindowWidth } from "../../../redux/app/app.selectors";
 
 const imageList = [
   "post1.png",
@@ -24,12 +26,18 @@ const PostImage = ({ isFullPost, isLiked, likePost, postRef }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [showHeart, setShowHeart] = useState(false);
   const [dbClickActive, setDbClickActive] = useState(true);
-  const width = isFullPost ? 1000 : 600;
-  const height = isFullPost ? 1200 : 800;
+  const windowWidth = useSelector(selectWindowWidth);
+  const [imageWidth, setImageWidth] = useState(0);
 
-  if (isFullPost) {
-    console.log(postRef);
-  }
+  const imageHeight = imageWidth * (4 / 3);
+
+  useEffect(() => {
+    if (isFullPost) {
+      setImageWidth(postRef.current.clientWidth - 500);
+    } else {
+      setImageWidth(postRef.current.clientWidth);
+    }
+  }, [postRef, windowWidth, isFullPost]);
 
   const handleDoubleClick = (e) => {
     if (e.target === e.currentTarget && dbClickActive) {
@@ -82,73 +90,51 @@ const PostImage = ({ isFullPost, isLiked, likePost, postRef }) => {
         <Image
           onDoubleClick={(e) => handleDoubleClick(e)}
           src={`/${imageId}`}
-          width={width}
-          height={height}
+          width={imageWidth}
+          height={imageHeight}
           alt="post"
         />
       </div>
     ));
   };
 
-  const getPostWidth = () => {
-    if (postRef.current) {
-      if (isFullPost) {
-        return postRef.current.clientWidth - 500;
-      } else {
-        return postRef.current.clientWidth;
-      }
-    } else {
-      return 0;
-    }
-  };
-
-  const getPostHeight = () => {
-    if (postRef.current) {
-      if (isFullPost) {
-        return postRef.current.clientWidth * (4 / 3);
-      } else {
-        return postRef.current.clientWidth * (4 / 3);
-      }
-    } else {
-      return 0;
-    }
-  };
-
   return (
     <div className={styles.container}>
       <div
         className={styles.imagesContainer}
-        style={{ width: getPostWidth(), height: getPostHeight() }}
+        style={{ width: imageWidth, height: imageHeight }}
       >
         <div
           className={styles.images}
           style={{
-            width: getPostWidth() * imageList.length,
-            height: getPostHeight(),
-            transform: `translateX(-${imageIndex * getPostWidth()}px)`,
+            width: imageWidth * imageList.length,
+            height: imageHeight,
+            transform: `translateX(-${imageIndex * imageWidth}px)`,
           }}
         >
           {renderImages()}
         </div>
       </div>
-      <div
-        className={styles.overlay}
-        onDoubleClick={(e) => handleDoubleClick(e)}
-      >
-        <FaChevronCircleLeft
-          className={styles.arrows}
-          style={{ visibility: imageIndex < 1 ? "hidden" : "visible" }}
-          onClick={() => changeImage("prev")}
-        />
-        {showHeart && <AiFillHeart className={styles.heart} />}
-        <FaChevronCircleRight
-          className={styles.arrows}
-          style={{
-            visibility: imageIndex === imageNum - 1 ? "hidden" : "visible",
-          }}
-          onClick={() => changeImage("next")}
-        />
-      </div>
+      {imageWidth > 0 && (
+        <div
+          className={styles.overlay}
+          onDoubleClick={(e) => handleDoubleClick(e)}
+        >
+          <FaChevronCircleLeft
+            className={styles.arrows}
+            style={{ visibility: imageIndex < 1 ? "hidden" : "visible" }}
+            onClick={() => changeImage("prev")}
+          />
+          {showHeart && <AiFillHeart className={styles.heart} />}
+          <FaChevronCircleRight
+            className={styles.arrows}
+            style={{
+              visibility: imageIndex === imageNum - 1 ? "hidden" : "visible",
+            }}
+            onClick={() => changeImage("next")}
+          />
+        </div>
+      )}
       <div
         className={`${styles.dots} ${
           isFullPost ? styles.full : styles.preview
