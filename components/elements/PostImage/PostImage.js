@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   FaChevronCircleLeft,
@@ -6,18 +6,30 @@ import {
   FaCircle,
 } from "react-icons/fa";
 import { AiFillHeart } from "react-icons/ai";
+import "react-slideshow-image/dist/styles.css";
 
 import styles from "./PostImage.module.css";
 
-const imageList = ["post1", "post2", "post3", "post4", "post5", "post6"];
+const imageList = [
+  "post1.png",
+  "post2.png",
+  "post3.png",
+  "post4.png",
+  "post5.png",
+  "post6.png",
+];
 
-const PostImage = ({ isFullPost, isLiked, likePost }) => {
+const PostImage = ({ isFullPost, isLiked, likePost, postRef }) => {
   const imageNum = 6;
   const [imageIndex, setImageIndex] = useState(0);
   const [showHeart, setShowHeart] = useState(false);
   const [dbClickActive, setDbClickActive] = useState(true);
   const width = isFullPost ? 1000 : 600;
-  const height = isFullPost ? 1400 : 1000;
+  const height = isFullPost ? 1200 : 800;
+
+  if (isFullPost) {
+    console.log(postRef);
+  }
 
   const handleDoubleClick = (e) => {
     if (e.target === e.currentTarget && dbClickActive) {
@@ -38,10 +50,10 @@ const PostImage = ({ isFullPost, isLiked, likePost }) => {
 
   const changeImage = (direction) => {
     switch (direction) {
-      case "back":
+      case "prev":
         setImageIndex(imageIndex - 1);
         break;
-      case "forward":
+      case "next":
         setImageIndex(imageIndex + 1);
         break;
 
@@ -64,15 +76,60 @@ const PostImage = ({ isFullPost, isLiked, likePost }) => {
     return dots;
   };
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.image}>
+  const renderImages = () => {
+    return imageList.map((imageId, index) => (
+      <div key={index}>
         <Image
-          src={`/${imageList[imageIndex]}.png`}
+          onDoubleClick={(e) => handleDoubleClick(e)}
+          src={`/${imageId}`}
           width={width}
           height={height}
           alt="post"
         />
+      </div>
+    ));
+  };
+
+  const getPostWidth = () => {
+    if (postRef.current) {
+      if (isFullPost) {
+        return postRef.current.clientWidth - 500;
+      } else {
+        return postRef.current.clientWidth;
+      }
+    } else {
+      return 0;
+    }
+  };
+
+  const getPostHeight = () => {
+    if (postRef.current) {
+      if (isFullPost) {
+        return postRef.current.clientWidth * (4 / 3);
+      } else {
+        return postRef.current.clientWidth * (4 / 3);
+      }
+    } else {
+      return 0;
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <div
+        className={styles.imagesContainer}
+        style={{ width: getPostWidth(), height: getPostHeight() }}
+      >
+        <div
+          className={styles.images}
+          style={{
+            width: getPostWidth() * imageList.length,
+            height: getPostHeight(),
+            transform: `translateX(-${imageIndex * getPostWidth()}px)`,
+          }}
+        >
+          {renderImages()}
+        </div>
       </div>
       <div
         className={styles.overlay}
@@ -81,7 +138,7 @@ const PostImage = ({ isFullPost, isLiked, likePost }) => {
         <FaChevronCircleLeft
           className={styles.arrows}
           style={{ visibility: imageIndex < 1 ? "hidden" : "visible" }}
-          onClick={() => changeImage("back")}
+          onClick={() => changeImage("prev")}
         />
         {showHeart && <AiFillHeart className={styles.heart} />}
         <FaChevronCircleRight
@@ -89,7 +146,7 @@ const PostImage = ({ isFullPost, isLiked, likePost }) => {
           style={{
             visibility: imageIndex === imageNum - 1 ? "hidden" : "visible",
           }}
-          onClick={() => changeImage("forward")}
+          onClick={() => changeImage("next")}
         />
       </div>
       <div

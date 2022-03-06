@@ -1,4 +1,4 @@
-import { forwardRef, Fragment, useState } from "react";
+import { forwardRef, Fragment, useEffect, useRef, useState } from "react";
 
 import PostHeader from "../PostHeader/PostHeader";
 
@@ -13,6 +13,7 @@ const Post = (props, ref) => {
   const { isFullPost } = props;
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const postRef = useRef();
   const dispatch = useDispatch();
 
   const toggleLikePost = () => {
@@ -41,34 +42,38 @@ const Post = (props, ref) => {
   if (isFullPost) {
     return (
       <div className={styles.fullPostContainer} ref={ref}>
-        <PostImage
-          isLiked={isLiked}
-          likePost={toggleLikePost}
-          isFullPost={true}
-        />
-        <div className={styles.fullPostContent}>
-          <PostHeader />
-          <div className={styles.comments}></div>
-          <div className={styles.interactions}>
-            <PostInteractions
-              isLiked={isLiked}
-              isSaved={isSaved}
-              toggleLikePost={toggleLikePost}
-              toggleSavePost={toggleSavePost}
-            />
+        <div className={styles.fullPost} ref={postRef}>
+          <PostImage
+            isLiked={isLiked}
+            likePost={toggleLikePost}
+            isFullPost={true}
+            postRef={postRef}
+          />
+          <div className={styles.fullPostContent}>
+            <PostHeader />
+            <div className={styles.comments}></div>
+            <div className={styles.interactions}>
+              <PostInteractions
+                isLiked={isLiked}
+                isSaved={isSaved}
+                toggleLikePost={toggleLikePost}
+                toggleSavePost={toggleSavePost}
+              />
+            </div>
+            <CommentBox />
           </div>
-          <CommentBox />
         </div>
       </div>
     );
   } else {
     return (
-      <div className={styles.overviewContainer}>
+      <div className={styles.overviewContainer} ref={postRef}>
         <PostHeader />
         <PostImage
           isLiked={isLiked}
           likePost={toggleLikePost}
           isFullPost={false}
+          postRef={postRef}
         />
         <div className={styles.overviewContent}>
           <PostInteractions

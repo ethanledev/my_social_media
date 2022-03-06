@@ -9,7 +9,7 @@ const PostTile = () => {
   return (
     <div className={styles.container}>
       <Image
-        src="/post.jpg"
+        src="/post1.png"
         layout="responsive"
         width={0}
         height={0}

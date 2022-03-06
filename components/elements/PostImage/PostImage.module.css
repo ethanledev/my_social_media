@@ -12,6 +12,11 @@
   box-shadow: 0px 0px 5px 1px lightgray;
 }
 
+.dot.active {
+  color: var(--button-blue);
+  font-size: 7px;
+}
+
 .dots {
   width: 100%;
   font-size: 6px;
@@ -20,12 +25,10 @@
   justify-content: center;
   align-items: flex-end;
 }
-
 .dots svg {
   margin-right: 4px;
   cursor: default !important;
 }
-
 .dots.full {
   position: absolute;
   bottom: 20px;
@@ -41,8 +44,19 @@
   animation: bounceHeart 1s, fadeOutHeart 0.6s 1s;
 }
 
-.image span {
+.images {
+  display: flex;
+  position: absolute;
+  transition: transform 100ms;
+}
+
+.images span {
   display: block !important;
+}
+
+.imagesContainer {
+  position: relative;
+  overflow: hidden;
 }
 
 .overlay {
@@ -81,5 +95,11 @@
   50%,
   100% {
     transform: scale(0);
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .imagesContainer {
+    width: 100%;
   }
 }

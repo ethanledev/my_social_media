@@ -4,12 +4,16 @@
   border-bottom: 1px solid var(--border-gray);
 }
 
-.fullPostContainer {
+.fullPost {
   background-color: white;
-  display: flex;
   width: 100%;
+  display: flex;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.fullPostContainer {
+  width: 100%;
   margin: 0 65px;
 }
 
