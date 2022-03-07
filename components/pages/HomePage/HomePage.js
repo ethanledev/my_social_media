@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Fragment } from "react";
 
-import Post from "../../elements/Post/Post";
+import PostOverview from "../../elements/PostOverview/PostOverview";
 
 import styles from "./HomePage.module.css";
 
@@ -16,10 +16,10 @@ const HomePage = () => {
 
       <main className={styles.main}>
         <div className={styles.posts}>
-          <Post isFullPost={false} />
-          <Post isFullPost={false} />
-          <Post isFullPost={false} />
-          <Post isFullPost={false} />
+          <PostOverview />
+          <PostOverview />
+          <PostOverview />
+          <PostOverview />
         </div>
       </main>
     </Fragment>

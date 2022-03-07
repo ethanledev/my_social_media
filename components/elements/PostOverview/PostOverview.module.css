@@ -1,0 +1,45 @@
+.comment {
+  padding-bottom: 10px;
+}
+
+.comment span:first-child {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.comment span {
+  margin-right: 5px;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.container {
+  background-color: white;
+  border: 1px solid var(--border-gray);
+  margin-bottom: 20px;
+  width: 600px;
+}
+
+.container:last-child {
+  margin-bottom: 0px;
+}
+
+.content {
+  padding: 0 15px;
+  font-size: 14px;
+}
+
+.viewAllComments {
+  color: var(--input-placeholder-gray);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+  .container {
+    width: 100%;
+  }
+}

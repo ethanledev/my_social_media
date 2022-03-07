@@ -47,7 +47,7 @@
 .images {
   display: flex;
   position: absolute;
-  transition: transform 100ms;
+  transition: transform 500ms;
 }
 
 .images span {

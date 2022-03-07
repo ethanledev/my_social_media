@@ -21,23 +21,24 @@ const imageList = [
   "post6.png",
 ];
 
-const PostImage = ({ isFullPost, isLiked, likePost, postRef }) => {
+const PostImage = ({ isFullPost, isLiked, likePost, containerRef }) => {
   const imageNum = 6;
   const [imageIndex, setImageIndex] = useState(0);
   const [showHeart, setShowHeart] = useState(false);
   const [dbClickActive, setDbClickActive] = useState(true);
   const windowWidth = useSelector(selectWindowWidth);
   const [imageWidth, setImageWidth] = useState(0);
-
-  const imageHeight = imageWidth * (4 / 3);
+  const [imageHeight, setImageHeight] = useState(0);
 
   useEffect(() => {
     if (isFullPost) {
-      setImageWidth(postRef.current.clientWidth - 500);
+      setImageHeight(containerRef.current.clientHeight);
+      setImageWidth(containerRef.current.clientHeight / (4 / 3));
     } else {
-      setImageWidth(postRef.current.clientWidth);
+      setImageWidth(containerRef.current.clientWidth);
+      setImageHeight(containerRef.current.clientWidth * (4 / 3));
     }
-  }, [postRef, windowWidth, isFullPost]);
+  }, [containerRef, windowWidth, isFullPost]);
 
   const handleDoubleClick = (e) => {
     if (e.target === e.currentTarget && dbClickActive) {
