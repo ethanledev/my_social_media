@@ -13,7 +13,7 @@ const PostTile = ({ id, list }) => {
   return (
     <div className={styles.container} onClick={null}>
       <Image
-        src="/post1.png"
+        src="/1-1/1.jpeg"
         layout="responsive"
         width={0}
         height={0}

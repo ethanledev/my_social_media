@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import {
   FaChevronCircleLeft,
@@ -9,36 +9,13 @@ import { AiFillHeart } from "react-icons/ai";
 import "react-slideshow-image/dist/styles.css";
 
 import styles from "./PostImage.module.css";
-import { useSelector } from "react-redux";
-import { selectWindowWidth } from "../../../redux/app/app.selectors";
 
-const imageList = [
-  "post1.png",
-  "post2.png",
-  "post3.png",
-  "post4.png",
-  "post5.png",
-  "post6.png",
-];
-
-const PostImage = ({ isFullPost, isLiked, likePost, containerRef }) => {
-  const imageNum = 6;
+const PostImage = ({ isOverview, isLiked, likePost, images }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [showHeart, setShowHeart] = useState(false);
   const [dbClickActive, setDbClickActive] = useState(true);
-  const windowWidth = useSelector(selectWindowWidth);
-  const [imageWidth, setImageWidth] = useState(0);
-  const [imageHeight, setImageHeight] = useState(0);
-
-  useEffect(() => {
-    if (isFullPost) {
-      setImageHeight(containerRef.current.clientHeight);
-      setImageWidth(containerRef.current.clientHeight / (4 / 3));
-    } else {
-      setImageWidth(containerRef.current.clientWidth);
-      setImageHeight(containerRef.current.clientWidth * (4 / 3));
-    }
-  }, [containerRef, windowWidth, isFullPost]);
+  const { size, list } = images;
+  const { width, height } = size;
 
   const handleDoubleClick = (e) => {
     if (e.target === e.currentTarget && dbClickActive) {
@@ -73,7 +50,7 @@ const PostImage = ({ isFullPost, isLiked, likePost, containerRef }) => {
 
   const renderDots = () => {
     let dots = [];
-    for (let i = 0; i < imageNum; i++) {
+    for (let i = 0; i < list.length; i++) {
       dots.push(
         <FaCircle
           key={i}
@@ -86,13 +63,13 @@ const PostImage = ({ isFullPost, isLiked, likePost, containerRef }) => {
   };
 
   const renderImages = () => {
-    return imageList.map((imageId, index) => (
+    return list.map((imageId, index) => (
       <div key={index}>
         <Image
           onDoubleClick={(e) => handleDoubleClick(e)}
-          src={`/${imageId}`}
-          width={imageWidth}
-          height={imageHeight}
+          src={`${imageId}`}
+          width={width}
+          height={height}
           alt="post"
         />
       </div>
@@ -101,22 +78,19 @@ const PostImage = ({ isFullPost, isLiked, likePost, containerRef }) => {
 
   return (
     <div className={styles.container}>
-      <div
-        className={styles.imagesContainer}
-        style={{ width: imageWidth, height: imageHeight }}
-      >
+      <div className={styles.imagesContainer} style={{ width, height }}>
         <div
           className={styles.images}
           style={{
-            width: imageWidth * imageList.length,
-            height: imageHeight,
-            transform: `translateX(-${imageIndex * imageWidth}px)`,
+            width: width * list.length,
+            height,
+            transform: `translateX(-${imageIndex * width}px)`,
           }}
         >
           {renderImages()}
         </div>
       </div>
-      {imageWidth > 0 && (
+      {width > 0 && (
         <div
           className={styles.overlay}
           onDoubleClick={(e) => handleDoubleClick(e)}
@@ -130,7 +104,7 @@ const PostImage = ({ isFullPost, isLiked, likePost, containerRef }) => {
           <FaChevronCircleRight
             className={styles.arrows}
             style={{
-              visibility: imageIndex === imageNum - 1 ? "hidden" : "visible",
+              visibility: imageIndex === list.length - 1 ? "hidden" : "visible",
             }}
             onClick={() => changeImage("next")}
           />
@@ -138,7 +112,7 @@ const PostImage = ({ isFullPost, isLiked, likePost, containerRef }) => {
       )}
       <div
         className={`${styles.dots} ${
-          isFullPost ? styles.full : styles.preview
+          isOverview ? styles.overview : styles.full
         }`}
       >
         {renderDots()}

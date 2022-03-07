@@ -18,10 +18,6 @@ const Overlay = () => {
   const overlayType = useSelector(selectOverlayType);
   const dispatch = useDispatch();
   const componentRef = useRef();
-  const leftArrowRef = useRef();
-  const rightArrowRef = useRef();
-
-  const postList = [1, 2, 3, 4, 5];
 
   const renderComponent = () => {
     switch (overlayType) {

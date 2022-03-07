@@ -20,12 +20,7 @@
 .container {
   background-color: white;
   border: 1px solid var(--border-gray);
-  margin-bottom: 20px;
   width: 600px;
-}
-
-.container:last-child {
-  margin-bottom: 0px;
 }
 
 .content {

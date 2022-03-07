@@ -1,14 +1,22 @@
 .main {
   position: relative;
-  padding: 20px 0px 0px 0px;
+  padding: 20px 0px 00px 0px;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
+.post {
+  padding-bottom: 20px;
+}
+
 .posts {
   width: 600px;
-  padding-bottom: 20px;
+  height: 100%;
+}
+
+.posts div:last-child {
+  padding-bottom: 10px;
 }
 
 @media only screen and (max-width: 1024px) {
