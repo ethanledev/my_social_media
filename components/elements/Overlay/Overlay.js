@@ -11,7 +11,6 @@ import {
   SHOW_POST,
 } from "../../../redux/overlay/overlay.types";
 import { hideOverlay } from "../../../redux/overlay/overlay.actions";
-import Post from "../Post/Post";
 
 import styles from "./Overlay.module.css";
 
@@ -29,9 +28,7 @@ const Overlay = () => {
       case SHOW_CREATE_CONVERSATION:
         return <CreateConversation ref={componentRef} />;
       case SHOW_POST:
-        return (
-          <Post isFullPost={true} ref={componentRef} postList={postList} />
-        );
+        break;
 
       default:
         break;
@@ -39,38 +36,13 @@ const Overlay = () => {
   };
 
   const handleOnClick = (e) => {
-    if (overlayType === SHOW_POST) {
-      if (
-        !componentRef.current.contains(e.target) &&
-        !leftArrowRef.current.contains(e.target) &&
-        !rightArrowRef.current.contains(e.target)
-      ) {
-        dispatch(hideOverlay());
-      }
-    } else if (!componentRef.current.contains(e.target)) {
+    if (!componentRef.current.contains(e.target)) {
       dispatch(hideOverlay());
     }
   };
 
   return (
     <div className={styles.container} onClick={(e) => handleOnClick(e)}>
-      {overlayType === SHOW_POST && (
-        <Fragment>
-          <IoMdClose className={styles.closeButton} />
-          <div ref={leftArrowRef}>
-            <FaChevronCircleLeft
-              className={styles.arrows}
-              style={{ left: 10 }}
-            />
-          </div>
-          <div ref={rightArrowRef}>
-            <FaChevronCircleRight
-              className={styles.arrows}
-              style={{ right: 10 }}
-            />
-          </div>
-        </Fragment>
-      )}
       {renderComponent()}
     </div>
   );

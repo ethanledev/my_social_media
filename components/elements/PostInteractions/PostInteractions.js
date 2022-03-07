@@ -28,7 +28,7 @@ const PostInteractions = ({
           ) : (
             <AiOutlineHeart onClick={toggleLikePost} />
           )}
-          <RiMessage3Line onClick={() => dispatch(showPost(["postId"]))} />
+          <RiMessage3Line onClick={null} />
           <FiSend />
         </div>
         <div className={styles.saveButton}>

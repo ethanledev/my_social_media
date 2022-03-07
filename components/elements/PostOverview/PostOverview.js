@@ -43,10 +43,7 @@ const PostOverview = () => {
             <span>hieuhmle</span>
             <span>amazing!</span>
           </div>
-          <div
-            className={styles.viewAllComments}
-            onClick={() => dispatch(showPost(["postID"]))}
-          >
+          <div className={styles.viewAllComments} onClick={null}>
             View all 273 comments
           </div>
         </div>

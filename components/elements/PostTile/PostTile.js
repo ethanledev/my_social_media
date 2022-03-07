@@ -2,12 +2,16 @@ import Image from "next/image";
 
 import { AiFillHeart } from "react-icons/ai";
 import { RiMessage3Fill } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { showPost } from "../../../redux/overlay/overlay.actions";
 
 import styles from "./PostTile.module.css";
 
-const PostTile = () => {
+const PostTile = ({ id, list }) => {
+  const dispatch = useDispatch();
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={null}>
       <Image
         src="/post1.png"
         layout="responsive"

@@ -6,7 +6,10 @@ import {
 
 const INITIAL_STATE = {
   overlayType: null,
-  posts: [],
+  posts: {
+    index: 0,
+    list: [],
+  },
 };
 
 const overlayReducer = (state = INITIAL_STATE, action) => {
@@ -14,6 +17,7 @@ const overlayReducer = (state = INITIAL_STATE, action) => {
     case SHOW_CREATE_CONVERSATION:
       return { ...state, overlayType: SHOW_CREATE_CONVERSATION };
     case SHOW_POST:
+      console.log(action.payload);
       return { overlayType: SHOW_POST, posts: action.payload };
     case HIDE_OVERLAY:
       return INITIAL_STATE;

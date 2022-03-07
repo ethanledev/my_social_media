@@ -10,7 +10,10 @@ export const showCreateConversation = () => ({
   type: SHOW_CREATE_CONVERSATION,
 });
 
-export const showPost = (postId) => ({
+export const showPost = (postList, index = 0) => ({
   type: SHOW_POST,
-  payload: postId,
+  payload: {
+    index,
+    list: postList,
+  },
 });

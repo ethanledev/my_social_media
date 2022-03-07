@@ -75,6 +75,14 @@ const ProfilePage = () => {
     );
   };
 
+  const generateDummyPostList = () => {
+    let list = [];
+    for (let i = 0; i < 14; i++) {
+      list.push("post" + i);
+    }
+    return list;
+  };
+
   return (
     <Fragment>
       <main className={styles.main}>
@@ -92,7 +100,7 @@ const ProfilePage = () => {
         {windowWidth <= 350 && renderNumbersInfo()}
         {windowWidth <= 750 && renderBio()}
         <hr />
-        <PostList />
+        <PostList list={generateDummyPostList()} />
       </main>
     </Fragment>
   );
