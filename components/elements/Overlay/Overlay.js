@@ -1,8 +1,5 @@
-import { Fragment, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { IoMdClose } from "react-icons/io";
-import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 
 import { selectOverlayType } from "../../../redux/overlay/overlay.selectors";
 import CreateConversation from "../CreateConversation/CreateConversation";
@@ -13,16 +10,17 @@ import {
 import { hideOverlay } from "../../../redux/overlay/overlay.actions";
 
 import styles from "./Overlay.module.css";
+import { useState } from "react";
 
 const Overlay = () => {
+  const [componentRefs, setComponentRefs] = useState([]);
   const overlayType = useSelector(selectOverlayType);
   const dispatch = useDispatch();
-  const componentRef = useRef();
 
   const renderComponent = () => {
     switch (overlayType) {
       case SHOW_CREATE_CONVERSATION:
-        return <CreateConversation ref={componentRef} />;
+        return <CreateConversation setComponentRefs={setComponentRefs} />;
       case SHOW_POST:
         break;
 
@@ -32,7 +30,13 @@ const Overlay = () => {
   };
 
   const handleOnClick = (e) => {
-    if (!componentRef.current.contains(e.target)) {
+    if (componentRefs.length) {
+      for (let ref of componentRefs) {
+        if (ref.current.contains(e.target)) {
+          return;
+        }
+      }
+
       dispatch(hideOverlay());
     }
   };

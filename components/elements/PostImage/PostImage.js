@@ -54,7 +54,7 @@ const PostImage = ({ isOverview, isLiked, likePost, images }) => {
       dots.push(
         <FaCircle
           key={i}
-          className={i === imageIndex ? styles.blueDot : null}
+          style={i === imageIndex ? { color: "var(--button-blue)" } : null}
         />
       );
     }

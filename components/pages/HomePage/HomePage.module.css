@@ -15,10 +15,6 @@
   height: 100%;
 }
 
-.posts div:last-child {
-  padding-bottom: 10px;
-}
-
 @media only screen and (max-width: 1024px) {
   .posts {
     padding-bottom: 75px;
