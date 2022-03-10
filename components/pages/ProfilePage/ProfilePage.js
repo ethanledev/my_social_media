@@ -13,94 +13,99 @@ const ProfilePage = () => {
   const [isFollowing, setIsFollowing] = useState(false);
   const windowWidth = useSelector(selectWindowWidth);
 
-  const handleFollow = () => {
-    setIsFollowing(true);
+  const toggleFollowing = (willFollow) => {
+    if (willFollow) {
+      setIsFollowing(true);
+    } else {
+      setIsFollowing(false);
+    }
   };
 
-  const renderButtons = () => {
-    if (isFollowing) {
-      return (
-        <div className={styles.buttons}>
-          <div className={styles.button}>Message</div>
-          <div className={styles.button}>
-            <FaUser />
-            <AiOutlineCheck />
-          </div>
-        </div>
-      );
+  const renderProfilePicture = () => {
+    if (windowWidth > 600) {
+      return getProfileIcon("xxl", true);
+    } else if (windowWidth > 350) {
+      return getProfileIcon("xl", true);
     } else {
-      return (
-        <div className={styles.blueButton} onClick={handleFollow}>
-          Follow
-        </div>
-      );
+      return getProfileIcon("l", true);
     }
   };
 
   const renderBio = () => (
-    <div className={styles.bioContainer}>
-      <div className={styles.displayName}>Hieu Le</div>
-      <div className={styles.bio}>
+    <div className={styles.bio}>
+      <div>Hieu Le</div>
+      <div>
         {
-          "For Work (My manager)\nTel : +6696-851-8199\nline ID :@baifern_work(with@)For Work (My manager)\nTel : +6696-851-8199\nline ID :@baifern_work(with@)For Work (My manager)\nTel : +6696-851-8199\nline ID :@baifern_work(with@)For Work (My manager)\nTel : +6696-851-8199\nline ID :@baifern_work(with@)"
+          "Web Developer\nHouston TX\nEmail: hieuhmle@gmail.com\nPhone: (346) 677 - 2577"
         }
       </div>
     </div>
   );
 
-  const renderProfilePicture = () => {
-    if (windowWidth > 750) {
-      return getProfileIcon("xl");
+  const renderNumberInfos = () => (
+    <div className={styles.infoBox}>
+      <span>
+        <span className={styles.number}>393</span> posts
+      </span>
+      <span>
+        {" "}
+        <span className={styles.number}>1.7m</span> followers
+      </span>
+      <span style={{ marginRight: 0 }}>
+        <span className={styles.number}>333</span> following
+      </span>
+    </div>
+  );
+
+  const renderButtons = () => {
+    if (isFollowing) {
+      return (
+        <div className={styles.buttons}>
+          <button className={styles.button}>Message</button>
+          <button
+            className={styles.button}
+            onClick={() => toggleFollowing(false)}
+          >
+            <FaUser />
+            <AiOutlineCheck />
+          </button>
+        </div>
+      );
     } else {
-      return getProfileIcon("l");
+      return (
+        <button
+          className={`${styles.button} ${styles.blueButton}`}
+          onClick={() => toggleFollowing(true)}
+        >
+          Follow
+        </button>
+      );
     }
-  };
-
-  const renderNumbersInfo = () => {
-    return (
-      <div className={styles.info}>
-        <div>
-          <span className={styles.infoNumber}>4,355 </span>
-          <span>posts</span>
-        </div>
-        <div>
-          <span className={styles.infoNumber}>9,9m </span>
-          <span>followers</span>
-        </div>
-        <div>
-          <span className={styles.infoNumber}>481 </span>
-          <span>following</span>
-        </div>
-      </div>
-    );
-  };
-
-  const generateDummyPostList = () => {
-    let list = [];
-    for (let i = 0; i < 14; i++) {
-      list.push("post" + i);
-    }
-    return list;
   };
 
   return (
     <Fragment>
       <main className={styles.main}>
-        <div className={styles.infoContainer}>
-          {renderProfilePicture()}
-          <div className={styles.infos}>
-            <div className={`${styles.info} ${styles.infoHeader}`}>
-              <div className={styles.username}>hieuhmle</div>
-              {renderButtons()}
+        <div className={styles.container}>
+          <div className={styles.infoContainer}>
+            <div className={styles.infoBox}>
+              <div className={styles.profilePicture}>
+                {renderProfilePicture()}
+              </div>
+              <div className={styles.info}>
+                <div className={styles.buttonsContainer}>
+                  <span>hieuhmle</span>
+                  {renderButtons()}
+                </div>
+                {windowWidth > 750 ? renderNumberInfos() : null}
+                {windowWidth > 750 ? renderBio() : null}
+              </div>
             </div>
-            {windowWidth > 350 && renderNumbersInfo()}
-            {windowWidth > 750 && renderBio()}
+            {windowWidth <= 750 ? renderBio() : null}
           </div>
+          {windowWidth <= 750 ? renderNumberInfos() : null}
+          <PostList />
         </div>
-        {windowWidth <= 350 && renderNumbersInfo()}
-        {windowWidth <= 750 && renderBio()}
-        <hr />
-        <PostList list={generateDummyPostList()} />
       </main>
     </Fragment>
   );

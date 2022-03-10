@@ -1,34 +1,6 @@
 .main {
   position: relative;
-  padding: 20px 0px 00px 0px;
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.post {
-  padding-bottom: 20px;
-}
-
-.posts {
-  width: 600px;
-  height: 100%;
-}
-
-@media only screen and (max-width: 1024px) {
-  .posts {
-    padding-bottom: 75px;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  .main {
-    padding: 20px 5px 0px 5px;
-  }
-}
-
-@media only screen and (max-width: 630px) {
-  .posts {
-    width: 100%;
-  }
 }

@@ -16,7 +16,6 @@ body {
   z-index: 0;
   height: 100vh;
   overflow: auto;
-  min-width: 400px;
 }
 
 a {
@@ -62,7 +61,7 @@ textarea {
 
 .pageContainer {
   height: 100vh;
-  padding-top: 65px;
+  padding-top: 85px;
   display: flex;
   justify-content: center;
 }
@@ -94,9 +93,6 @@ textarea {
   z-index: 1;
   border: 1px solid var(--border-gray);
   background-color: white;
-}
-
-@media only screen and (max-width: 1024px) {
 }
 
 :root {

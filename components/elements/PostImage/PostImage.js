@@ -6,7 +6,6 @@ import {
   FaCircle,
 } from "react-icons/fa";
 import { AiFillHeart } from "react-icons/ai";
-import "react-slideshow-image/dist/styles.css";
 
 import styles from "./PostImage.module.css";
 

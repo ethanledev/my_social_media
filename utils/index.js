@@ -25,7 +25,8 @@ export const getProfileIcon = (
     s: 35,
     m: 45,
     l: 90,
-    xl: 170,
+    xl: 120,
+    xxl: 170,
   };
 
   const profileIcon = (
