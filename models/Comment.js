@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const { ObjectId } = Schema.Types;
 
 const MentionSchema = new Schema({
+  _id: false,
   user: { type: ObjectId, ref: "User", required: true },
   notification: { type: ObjectId, required: true },
 });
@@ -11,8 +12,8 @@ const MentionSchema = new Schema({
 const CommentSchema = new Schema({
   author: { type: ObjectId, ref: "User", required: true },
   content: { type: String, required: true },
-  likes: [{ type: ObjectId, ref: "User" }],
-  mentions: [{ type: MentionSchema }],
+  likes: { type: [ObjectId], ref: "User" },
+  mentions: { type: [MentionSchema] },
 });
 
 export default mongoose.models.Comment ||
