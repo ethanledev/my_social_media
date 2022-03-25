@@ -3,17 +3,6 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 const { ObjectId } = Schema.Types;
 
-const validateContent = () => [
-  (content) => {
-    return (
-      content.text !== undefined ||
-      content.post !== undefined ||
-      content.image !== undefined
-    );
-  },
-  "Content must have text, post, or image",
-];
-
 const ReplySchema = new Schema({
   _id: false,
   user: { type: ObjectId, ref: "User", required: true },
@@ -32,7 +21,7 @@ const MessageSchema = new Schema({
   likes: { type: [ObjectId], ref: "User" },
   isReply: { type: Boolean, required: true },
   replyTo: { type: ReplySchema },
-  content: { type: ContentSchema, validate: validateContent() },
+  content: { type: ContentSchema },
 });
 
 export default mongoose.models.Message ||
