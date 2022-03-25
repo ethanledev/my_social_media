@@ -3,8 +3,8 @@ import jwt from "jsonwebtoken";
 import isEmail from "validator/lib/isEmail";
 import isLength from "validator/lib/isLength";
 
-import dbConnect from "../../lib/mongodb";
-import User from "../../models/User";
+import dbConnect from "../../../lib/mongodb";
+import User from "../../../models/User";
 
 dbConnect();
 
