@@ -11,7 +11,7 @@ const followingSchema = new Schema({
 const getNotificationSchema = (ref) => {
   return new Schema({
     _id: false,
-    [ref]: { type: ObjectId, ref },
+    [ref.toLowerCase()]: { type: ObjectId, ref },
     notification: { type: ObjectId, ref: "Notification" },
   });
 };
@@ -40,9 +40,9 @@ const UserSchema = new Schema({
   savedPosts: { type: [ObjectId], ref: "Post" },
   conversations: { type: [ObjectId], ref: "Conversation" },
   search: { type: [ObjectId], ref: "User" },
-  postLikes: { type: [getNotificationSchema("post")] },
-  commentLikes: { type: [getNotificationSchema("comment")] },
-  comments: { type: [getNotificationSchema("post")] },
+  postLikes: { type: [getNotificationSchema("Post")] },
+  commentLikes: { type: [getNotificationSchema("Comment")] },
+  comments: { type: [getNotificationSchema("Post")] },
   messengerNotifications: { type: [ObjectId], ref: "Conversation" },
   notifications: { type: [ObjectId], ref: "Notification" },
 });
