@@ -10,6 +10,7 @@ const MentionSchema = new Schema({
 });
 
 const CommentSchema = new Schema({
+  isReply: { type: Boolean, required: true },
   author: { type: ObjectId, ref: "User", required: true },
   content: { type: String, required: true },
   likes: { type: [ObjectId], ref: "User" },
