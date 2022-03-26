@@ -13,7 +13,7 @@ const handler = async (req, res) => {
     const { email, password, username } = req.body;
     const { isEmail, isLength } = validator;
     let newUser = undefined;
-    let newNoti = undefined;
+    let newNotification = undefined;
     try {
       //validate name, email, password
       if (!isLength(username, { min: 3, max: 15 })) {
@@ -45,15 +45,15 @@ const handler = async (req, res) => {
       });
       await newUser.validate();
       //create follow notification for user
-      newNoti = await new Notification({
+      newNotification = await new Notification({
         for: newUser._id,
         forModel: "User",
         notifier: newUser._id,
         action: "follow",
       });
-      await newNoti.validate();
+      await newNotification.validate();
       await newUser.save();
-      await newNoti.save();
+      await newNotification.save();
       //create token for new user
       const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
         expiresIn: "7d",
