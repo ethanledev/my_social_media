@@ -10,7 +10,11 @@ const NotificationSchema = new Schema({
   forModel: { type: String, required: true, enum: ["User", "Post", "Comment"] },
   actors: [{ type: ObjectId, ref: "User", required: true }],
   notifier: { type: ObjectId, ref: "User", required: true },
-  action: { type: String, required: true, enum: ["like", "comment", "follow"] },
+  action: {
+    type: String,
+    required: true,
+    enum: ["like", "comment", "reply", "follow"],
+  },
 });
 
 export default mongoose.models.Notification ||
